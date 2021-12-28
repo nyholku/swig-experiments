@@ -4,10 +4,18 @@
 class Base;
 class Derived;
 
-typedef std::shared_ptr<Base> BaseHandle;
-typedef std::shared_ptr<Derived> DerivedHandle;
+namespace opencascade{
 
-class Base {
+template<typename T>
+using shared_ptr = std::shared_ptr<T>;
+
+
+}
+
+typedef opencascade::handle<Base> BaseHandle;
+typedef opencascade::handle<Derived> DerivedHandle;
+
+class Base : public Standard_Transient {
 	public:
 		virtual BaseHandle foobar(BaseHandle x) {return x;};
                 void foba();
