@@ -24,6 +24,6 @@
 	static
 	{
                 System.out.println("Hello World");
-		System.load("/Users/nyholku/swig-experiments/out/experiment-cc-code_wrap.jnilib");
+		System.load("/Users/nyholku/swig-experiments/out/experiment.dylib");
 	}
 %}
