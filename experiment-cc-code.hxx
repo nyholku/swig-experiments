@@ -1,5 +1,6 @@
 #include <memory>
 
+#include "Standard_Handle.hxx"
 class Base;
 class Derived;
 

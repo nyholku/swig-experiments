@@ -1,6 +1,6 @@
 
 %module experimentModule
-%include <std_shared_ptr.i>
+%include "myshared_ptr.i"
 %shared_ptr(Base)
 %shared_ptr(Derived)
 
