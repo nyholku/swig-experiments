@@ -9,8 +9,17 @@
 #include "experiment-cc-code.hxx"
 %}
 
+//#include <Standard_DefineAlloc.hxx>
+//#include <Standard_Address.hxx>
+//#include <Standard_Size.hxx>
+//#include <Standard_Integer.hxx>
 
-%include "experiment-cc-code.hxx"
+%include "Standard_Macro.hxx"
+%include "Standard_DefineAlloc.hxx"
+%include "Standard.hxx"
+%include "Standard_PrimitiveTypes.hxx"
+%include "Standard_Transient.hxx"
+//%include "experiment-cc-code.hxx"
 
 // load the native library
 %pragma(java) jniclasscode=%{
