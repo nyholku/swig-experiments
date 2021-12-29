@@ -1,6 +1,7 @@
 
 %module experimentModule
 %include <std_shared_ptr.i>
+
 %shared_ptr(Base)
 %shared_ptr(Derived)
 
@@ -16,6 +17,6 @@
 	static
 	{
                 System.out.println("Hello World");
-		System.load("/Users/nyholku/swig-experiments/out/experiment-cc-code_wrap.jnilib");
+		System.load("/Users/nyholku/swig-experiments/out/experiment.dylib");
 	}
 %}
