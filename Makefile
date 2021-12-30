@@ -27,7 +27,7 @@ all:
 java:
 	javac -d $(out_dir) out/*.java
 	javac -d $(out_dir) -classpath ./out *.java
-	java -cp out Experiment
+	java -XX:+PrintGC -cp out Experiment
 
 #	cc -dynamiclib -o $(out_dir)/experiment.dylib $(out_dir)/experiment-cc-code_wrap.so $(out_dir)/experiment-cc-code.so
 #	cc -bundle -l$(out_dir)/experiment.dylib -o experiment.jnilib myJNILib.o

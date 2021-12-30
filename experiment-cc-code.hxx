@@ -6,6 +6,14 @@
 class Base;
 class Derived;
 
+namespace opencascade{
+
+template<typename T>
+using shared_ptr = std::shared_ptr<T>;
+
+
+}
+
 typedef opencascade::handle<Base> BaseHandle;
 typedef opencascade::handle<Derived> DerivedHandle;
 
