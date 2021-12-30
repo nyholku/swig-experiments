@@ -1,3 +1,3 @@
 # swig-experiments
 
-This is my private (but public) repo to share some SWIG experiments that I use as a learning tool
+The goal of these experiments is to create Java bindings for OpenCascade 7.5.0 using SWIG
