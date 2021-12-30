@@ -53,7 +53,7 @@ non portable references to libraries in the build machine.
 
 The magic that makes OCC accessible from Java is in `experiment-cc-code.i` file.
 
-This file will be renamed to `occ_java.i` in the immediate future but I document it here as it is now.
+This file will be renamed to `occ-java.i` in the immediate future but I document it here as it is now.
 
 To expose a new OCC class two lines need to be added, for example to expose BRepPrim_Wedge add
 
