@@ -3,10 +3,10 @@
 
 %include <occ_handle.i>
 
-%shared_ptr(Standard_Transient)
-%shared_ptr(Base)
-%shared_ptr(Derived)
-
+%occ_handle(Standard_Transient)
+%occ_handle(Base)
+%occ_handle(Derived)
+//%shared_ptr(BRepPrimAPI_MakeBox)
 
 
 %include "Standard_Macro.hxx"
@@ -14,6 +14,8 @@
 %include "Standard.hxx"
 %include "Standard_PrimitiveTypes.hxx"
 %include "Standard_Transient.hxx"
+
+//%include "BRepPrimAPI_MakeBox.hxx"
 
 %include "experiment-cc-code.hxx"
 

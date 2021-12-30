@@ -60,7 +60,7 @@ struct SWIG_null_deleter {
 
 
 // Main user macro for defining shared_ptr typemaps for both const and non-const pointer types
-%define %shared_ptr(TYPE...)
+%define %occ_handle(TYPE...)
 %feature("smartptr", noblock=1) TYPE { opencascade::handle< TYPE > }
 SWIG_SHARED_PTR_TYPEMAPS(, TYPE)
 SWIG_SHARED_PTR_TYPEMAPS(const, TYPE)
