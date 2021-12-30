@@ -1,6 +1,6 @@
 public class Experiment {
 	public static void main(String...args) {
-                for (int i=0; i<10000; i++) {
+                for (int i=0; true; i++) {
                         System.out.println("i = "+i);
         		Base base=new Base();
                         base.foba();
