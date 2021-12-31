@@ -68,7 +68,7 @@
 
 %include "Geom_Geometry.hxx"
 %include "Geom_Surface.hxx"
-//%include "BRep_Tool.hxx"
+%include "BRep_Tool.hxx"
 
 %include "experiment-cc-code.hxx"
 
