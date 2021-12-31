@@ -27,6 +27,7 @@
 %occ_handle(Geom2d_Ellipse)
 %occ_handle(Geom2d_BoundedCurve)
 %occ_handle(Geom2d_TrimmedCurve)
+%occ_handle(NCollection_BaseAllocator)
 
 %occ_handle(Base)
 %occ_handle(Derived)
@@ -90,12 +91,12 @@
 
 %include "Patched_Standard_Handle.hxx" // NOTE! patched!
 %include "Standard_Type.hxx"
+
+
 %include "TopAbs.hxx"
 %include "TopAbs_ShapeEnum.hxx"
 %include "TopoDS_TShape.hxx"
 %include "TopoDS_Shape.hxx"
-%include "NCollection_List.hxx"
-%include "TopTools_ListOfShape.hxx"
 %include "TopoDS_Face.hxx"
 %include "TopoDS_Edge.hxx"
 %include "TopoDS_Vertex.hxx"
@@ -108,16 +109,20 @@
 
 %include "GC_Root.hxx"
 %include "BRepPrim_GWedge.hxx"
-%include "BRepBuilderAPI_ModifyShape.hxx"
-%include "BRepFilletAPI_LocalOperation.hxx"
-%include "BRepAlgoAPI_BooleanOperation.hxx"
 
+%include <NCollection_TListIterator.hxx>
+%include <NCollection_StlIterator.hxx>
+%include "NCollection_List.hxx"
+%include "TopTools_ListOfShape.hxx"
 
 %include "BRepPrim_Wedge.hxx"
 %rename(getShape) BRepBuilderAPI_MakeShape::operator TopoDS_Shape();
 
 %include "BRepBuilderAPI_Command.hxx"
 %include "BRepBuilderAPI_MakeShape.hxx"
+%include "BRepBuilderAPI_ModifyShape.hxx"
+%include "BRepFilletAPI_LocalOperation.hxx"
+
 %include "Standard_Real.hxx"
 %rename(getShell) BRepPrimAPI_MakeBox::operator TopoDS_Shell();
 %rename(getSolid) BRepPrimAPI_MakeBox::operator TopoDS_Solid();
@@ -135,6 +140,19 @@
 %rename(getSolid) BRepPrimAPI_MakeOneAxis::operator TopoDS_Solid();
 %include "BRepPrimAPI_MakeOneAxis.hxx"
 %include "BRepPrimAPI_MakeSweep.hxx"
+
+
+%include "NCollection_BaseAllocator.hxx"
+%include "Standard_Integer.hxx"
+%include "Standard_Boolean.hxx"
+%include "BRepBuilderAPI_MakeShape.hxx"
+%include "BOPAlgo_Options.hxx"
+
+
+%include "BRepAlgoAPI_Algo.hxx"
+%include "BRepAlgoAPI_BuilderAlgo.hxx"
+%include "BRepAlgoAPI_BooleanOperation.hxx"
+%include "BRepOffsetAPI_MakeOffsetShape.hxx"
 %include "BRepOffsetAPI_MakeThickSolid.hxx"
 %include "BRepOffsetAPI_ThruSections.hxx"
 
@@ -158,6 +176,7 @@
 %include "Geom_TrimmedCurve.hxx"
 %include "GC_MakeArcOfCircle.hxx"
 %include "GC_MakeSegment.hxx"
+%include "GCE2d_Root.hxx"
 %include "GCE2d_MakeSegment.hxx"
 
 %include "Geom2d_Geometry.hxx"
@@ -167,6 +186,7 @@
 %include "Geom2d_BoundedCurve.hxx"
 %include "Geom2d_TrimmedCurve.hxx"
 
+%include "XSControl_Reader.hxx"
 %include "STEPControl_Reader.hxx"
 %include "BRepLib.hxx"
 
@@ -219,11 +239,12 @@
 
 #include "GC_Root.hxx"
 #include "BRepPrim_GWedge.hxx"
-#include "BRepBuilderAPI_ModifyShape.hxx"
-#include "BRepFilletAPI_LocalOperation.hxx"
 #include "BRepPrimAPI_MakeSweep.hxx"
 #include "BRepPrimAPI_MakeOneAxis.hxx"
+#include "BRepAlgoAPI_Algo.hxx"
+#include "BRepAlgoAPI_BuilderAlgo.hxx"
 #include "BRepAlgoAPI_BooleanOperation.hxx"
+#include "BRepOffsetAPI_MakeOffsetShape.hxx"
 #include "BRepOffsetAPI_MakeThickSolid.hxx"
 #include "BRepOffsetAPI_ThruSections.hxx"
 
@@ -231,6 +252,8 @@
 #include "BRepPrim_Wedge.hxx"
 #include "BRepBuilderAPI_Command.hxx"
 #include "BRepBuilderAPI_MakeShape.hxx"
+#include "BRepBuilderAPI_ModifyShape.hxx"
+#include "BRepFilletAPI_LocalOperation.hxx"
 #include "BRepPrimAPI_MakeBox.hxx"
 #include "BRepBuilderAPI_MakeEdge.hxx"
 #include "BRepBuilderAPI_MakeWire.hxx"
@@ -264,6 +287,7 @@
 #include "Geom_TrimmedCurve.hxx"
 #include "GC_MakeArcOfCircle.hxx"
 #include "GC_MakeSegment.hxx"
+#include "GCE2d_Root.hxx"
 #include "GCE2d_MakeSegment.hxx"
 
 #include "Geom2d_Geometry.hxx"
@@ -273,7 +297,7 @@
 #include "Geom2d_BoundedCurve.hxx"
 #include "Geom2d_TrimmedCurve.hxx"
 
-
+#include "XSControl_Reader.hxx"
 #include "STEPControl_Reader.hxx"
 #include "BRepLib.hxx"
 
