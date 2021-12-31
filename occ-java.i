@@ -6,8 +6,6 @@
 
 
 
-
-
 //%rename(double) Standard_Real;
 
 %occ_handle(Standard_Transient)
@@ -67,6 +65,9 @@
 %include "Standard_DefineAlloc.hxx"
 %include "Standard.hxx"
 %include "Standard_PrimitiveTypes.hxx"
+
+
+
 %include "gp_XYZ.hxx"
 %include "gp_Pln.hxx"
 %include "gp_Pnt.hxx"
@@ -90,7 +91,11 @@
 
 
 %include "Patched_Standard_Handle.hxx" // NOTE! patched!
+
+
+
 %include "Standard_Type.hxx"
+
 
 
 %include "TopAbs.hxx"
@@ -107,13 +112,13 @@
 %include "TopoDS_Compound.hxx"
 %include "TopoDS_Builder.hxx"
 
+%include "NCollection_List.hxx"
+%include "TopTools_ListOfShape.hxx"
+%template(TopTools_ListOfShape) NCollection_List<TopoDS_Shape>;
+
 %include "GC_Root.hxx"
 %include "BRepPrim_GWedge.hxx"
 
-%include <NCollection_TListIterator.hxx>
-%include <NCollection_StlIterator.hxx>
-%include "NCollection_List.hxx"
-%include "TopTools_ListOfShape.hxx"
 
 %include "BRepPrim_Wedge.hxx"
 %rename(getShape) BRepBuilderAPI_MakeShape::operator TopoDS_Shape();
@@ -220,13 +225,13 @@
 
 
 #include "Standard_Handle.hxx"
+#include "NCollection_List.hxx"
+#include "TopTools_ListOfShape.hxx"
 #include "Standard_Type.hxx"
 #include "TopAbs.hxx"
 #include "TopAbs_ShapeEnum.hxx"
 #include "TopoDS_TShape.hxx"
 #include "TopoDS_Shape.hxx"
-#include "NCollection_List.hxx"
-#include "TopTools_ListOfShape.hxx"
 #include "TopoDS_Face.hxx"
 #include "TopoDS_Edge.hxx"
 #include "TopoDS_Vertex.hxx"
@@ -302,6 +307,8 @@
 #include "BRepLib.hxx"
 
 #include "experiment-cc-code.hxx"
+
+#include "koe.hxx"
 %}
 
 // load the native library
