@@ -188,7 +188,7 @@ SWIG_SHARED_PTR_TYPEMAPS(const, TYPE)
 %{ $1 = $input ? *($&1_ltype)&$input : &tempnull; %}
 
 %typemap(out) SWIG_SHARED_PTR_QNAMESPACE::handle< CONST TYPE > &
-%{ *($&1_ltype)&$result = YYY *$1 ? new $*1_ltype(*$1) : 0; %}
+%{ *($&1_ltype)&$result = *$1 ? new $*1_ltype(*$1) : 0; %}
 
 %typemap(directorin,descriptor="L$packagepath/$typemap(jstype, TYPE);") SWIG_SHARED_PTR_QNAMESPACE::handle< CONST TYPE > &
 %{ $input = 0;

@@ -4,12 +4,13 @@ java_home = /Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home
 jni_headers =$(java_home)/include
 jni_darwin_headers = $(java_home)/include/darwin
 occ_headers = /usr/local/include/opencascade
+typetraits = /Library/Developer/CommandLineTools/usr/include/c++/v1/
 out_dir = out
 all:
 	rm -f ./$(out_dir)/*
 
 	gcc -std=c++11 -c -I$(occ_headers) -o $(out_dir)/experiment-cc-code.so experiment-cc-code.cxx
-	cd $(out_dir) && swig -I$(occ_headers) -outcurrentdir -c++ -java ../occ-java.i
+	cd $(out_dir) && swig -I$(typetraits) -cpperraswarn -I$(occ_headers) -outcurrentdir -c++ -java ../occ-java.i
 	gcc -std=c++11 -c -I. -I$(occ_headers) -I$(jni_headers) -I$(jni_darwin_headers) -o $(out_dir)/experiment-cc-code_wrap.so $(out_dir)/occ-java_wrap.cxx
 	gcc -std=c++11 -undefined dynamic_lookup -o $(out_dir)/experiment.dylib -shared -I. -I$(occ_headers) -I$(jni_headers) -I$(jni_darwin_headers) experiment-cc-code.cxx $(out_dir)/occ-java_wrap.cxx \
 	-L/usr/local/lib -Wl,-rpath,/usr/local/lib \
