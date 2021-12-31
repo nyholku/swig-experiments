@@ -93,6 +93,8 @@
 %include "BRepBuilderAPI_MakeFace.hxx"
 %include "BRepFilletAPI_MakeFillet.hxx"
 %include "BRepPrimAPI_MakePrism.hxx"
+%include "BRepPrimAPI_MakeCylinder.hxx"
+%include "BRepAlgoAPI_Fuse.hxx"
 
 %include "BRep_Tool.hxx"
 
@@ -155,6 +157,8 @@
 #include "BRepBuilderAPI_MakeFace.hxx"
 #include "BRepFilletAPI_MakeFillet.hxx"
 #include "BRepPrimAPI_MakePrism.hxx"
+#include "BRepPrimAPI_MakeCylinder.hxx"
+#include "BRepAlgoAPI_Fuse.hxx"
 
 
 #include "Standard_Handle.hxx"
