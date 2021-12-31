@@ -26,6 +26,7 @@
 
 %rename(GP_XYZ) gp_XYZ;
 %rename(GP_Pnt) gp_Pnt;
+%rename(GP_Pln) gp_Pln;
 %rename(GP_Dir) gp_Dir;
 %rename(GP_Vec) gp_Vec;
 %rename(GP_Ax1) gp_Ax1;
@@ -53,6 +54,7 @@
 %include "Standard_PrimitiveTypes.hxx"
 %include "gp_XYZ.hxx"
 %include "gp_Pnt.hxx"
+%include "gp_Pln.hxx"
 %include "gp_Dir.hxx"
 %include "gp_Vec.hxx"
 %include "gp_Ax1.hxx"
@@ -83,16 +85,34 @@
 %include "TopoDS_Iterator.hxx"
 %include "TopExp_Explorer.hxx"
 
+%include "GC_Root.hxx"
+%include "BRepPrim_GWedge.hxx"
+%include "BRepBuilderAPI_ModifyShape.hxx"
+%include "BRepFilletAPI_LocalOperation.hxx"
+%include "BRepPrimAPI_MakeSweep.hxx"
+%include "BRepPrimAPI_MakeOneAxis.hxx"
+%include "BRepAlgoAPI_BooleanOperation.hxx"
+
+
 %include "BRepPrim_Wedge.hxx"
+%rename(getShape) BRepBuilderAPI_MakeShape::operator TopoDS_Shape();
+
+%include "BRepBuilderAPI_Command.hxx"
 %include "BRepBuilderAPI_MakeShape.hxx"
 %include "Standard_Real.hxx"
+%rename(getShell) BRepPrimAPI_MakeBox::operator TopoDS_Shell();
+%rename(getSolid) BRepPrimAPI_MakeBox::operator TopoDS_Solid();
 %include "BRepPrimAPI_MakeBox.hxx"
+%rename(getEdge) BRepBuilderAPI_MakeEdge::operator TopoDS_Edge();
 %include "BRepBuilderAPI_MakeEdge.hxx"
+%rename(getWire) BRepBuilderAPI_MakeWire::operator TopoDS_Wire();
 %include "BRepBuilderAPI_MakeWire.hxx"
-%include "BRepBuilderAPI_Transform.hxx"
+%rename(getFace) BRepBuilderAPI_MakeFace::operator TopoDS_Face();
 %include "BRepBuilderAPI_MakeFace.hxx"
+%include "BRepBuilderAPI_Transform.hxx"
 %include "BRepFilletAPI_MakeFillet.hxx"
 %include "BRepPrimAPI_MakePrism.hxx"
+
 %include "BRepPrimAPI_MakeCylinder.hxx"
 %include "BRepAlgoAPI_Fuse.hxx"
 
@@ -120,6 +140,7 @@
 #include "Standard_TypeDef.hxx"
 #include "gp_XYZ.hxx"
 #include "gp_Pnt.hxx"
+#include "gp_Pln.hxx"
 #include "gp_Dir.hxx"
 #include "gp_Vec.hxx"
 #include "gp_Ax1.hxx"
@@ -148,7 +169,16 @@
 #include "TopoDS_Iterator.hxx"
 #include "TopExp_Explorer.hxx"
 
+#include "GC_Root.hxx"
+#include "BRepPrim_GWedge.hxx"
+#include "BRepBuilderAPI_ModifyShape.hxx"
+#include "BRepFilletAPI_LocalOperation.hxx"
+#include "BRepPrimAPI_MakeSweep.hxx"
+#include "BRepPrimAPI_MakeOneAxis.hxx"
+#include "BRepAlgoAPI_BooleanOperation.hxx"
+
 #include "BRepPrim_Wedge.hxx"
+#include "BRepBuilderAPI_Command.hxx"
 #include "BRepBuilderAPI_MakeShape.hxx"
 #include "BRepPrimAPI_MakeBox.hxx"
 #include "BRepBuilderAPI_MakeEdge.hxx"
