@@ -27,6 +27,7 @@ all:
 		-lTKPrim \
 		-lTKSTEP \
 		-lTKFillet \
+		-lTKOffset \
 
 	javac -d $(output) -sourcepath $(swigout) $(swigout)/occjava/*.java
 	javac -d $(output) -classpath $(output) Experiment.java
