@@ -74,6 +74,8 @@
 %include "Geom_Surface.hxx"
 %include "BRep_Tool.hxx"
 
+%include "STEPControl_Reader.hxx"
+
 %include "experiment-cc-code.hxx"
 
 
@@ -123,6 +125,7 @@
 #include "Geom_Geometry.hxx"
 #include "Geom_Surface.hxx"
 
+#include "STEPControl_Reader.hxx"
 #include "experiment-cc-code.hxx"
 %}
 
