@@ -13,10 +13,14 @@
 %occ_handle(Standard_Transient)
 %occ_handle(Base)
 %occ_handle(Derived)
-%occ_handle(Geom_Geometry)
 %occ_handle(Geom_Surface)
 %occ_handle(TopoDS_TShape)
 %occ_handle(Standard_Type)
+%occ_handle(Geom_Geometry)
+%occ_handle(Geom_Curve)
+%occ_handle(Geom_BoundedCurve)
+%occ_handle(Geom_TrimmedCurve)
+
 //%occ_handle(BRepPrim_Wedge)
 //%occ_handle(BRepPrimAPI_MakeBox)
 
@@ -60,6 +64,7 @@
 %include "TopoDS_Face.hxx"
 %include "TopoDS_Edge.hxx"
 %include "TopoDS_Vertex.hxx"
+%include "TopoDS_Wire.hxx"
 %include "TopLoc_Location.hxx"
 %include "TopoDS_Iterator.hxx"
 %include "TopExp_Explorer.hxx"
@@ -68,11 +73,18 @@
 %include "BRepBuilderAPI_MakeShape.hxx"
 %include "Standard_Real.hxx"
 %include "BRepPrimAPI_MakeBox.hxx"
+%include "BRepBuilderAPI_MakeEdge.hxx"
+%include "BRepBuilderAPI_MakeWire.hxx"
+%include "BRep_Tool.hxx"
 
 
 %include "Geom_Geometry.hxx"
 %include "Geom_Surface.hxx"
-%include "BRep_Tool.hxx"
+%include "Geom_Curve.hxx"
+%include "Geom_BoundedCurve.hxx"
+%include "Geom_TrimmedCurve.hxx"
+%include "GC_MakeArcOfCircle.hxx"
+%include "GC_MakeSegment.hxx"
 
 %include "STEPControl_Reader.hxx"
 
@@ -103,6 +115,7 @@
 #include "TopoDS_Face.hxx"
 #include "TopoDS_Edge.hxx"
 #include "TopoDS_Vertex.hxx"
+#include "TopoDS_Wire.hxx"
 #include "TopLoc_Location.hxx"
 #include "TopoDS_Iterator.hxx"
 #include "TopExp_Explorer.hxx"
@@ -110,6 +123,9 @@
 #include "BRepPrim_Wedge.hxx"
 #include "BRepBuilderAPI_MakeShape.hxx"
 #include "BRepPrimAPI_MakeBox.hxx"
+#include "BRepBuilderAPI_MakeEdge.hxx"
+#include "BRepBuilderAPI_MakeWire.hxx"
+
 
 #include "Standard_Handle.hxx"
 #include "Standard_Type.hxx"
@@ -124,6 +140,11 @@
 #include "BRep_Tool.hxx"
 #include "Geom_Geometry.hxx"
 #include "Geom_Surface.hxx"
+#include "Geom_Curve.hxx"
+#include "Geom_BoundedCurve.hxx"
+#include "Geom_TrimmedCurve.hxx"
+#include "GC_MakeArcOfCircle.hxx"
+#include "GC_MakeSegment.hxx"
 
 #include "STEPControl_Reader.hxx"
 #include "experiment-cc-code.hxx"
