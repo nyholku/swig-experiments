@@ -58,7 +58,11 @@
 %include "TopoDS_TShape.hxx"
 %include "TopoDS_Shape.hxx"
 %include "TopoDS_Face.hxx"
+%include "TopoDS_Edge.hxx"
+%include "TopoDS_Vertex.hxx"
 %include "TopLoc_Location.hxx"
+%include "TopoDS_Iterator.hxx"
+%include "TopExp_Explorer.hxx"
 
 %include "BRepPrim_Wedge.hxx"
 %include "BRepBuilderAPI_MakeShape.hxx"
@@ -95,7 +99,11 @@
 #include "TopoDS_TShape.hxx"
 #include "TopoDS_Shape.hxx"
 #include "TopoDS_Face.hxx"
+#include "TopoDS_Edge.hxx"
+#include "TopoDS_Vertex.hxx"
 #include "TopLoc_Location.hxx"
+#include "TopoDS_Iterator.hxx"
+#include "TopExp_Explorer.hxx"
 
 #include "BRepPrim_Wedge.hxx"
 #include "BRepBuilderAPI_MakeShape.hxx"
