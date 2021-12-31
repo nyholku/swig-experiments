@@ -122,6 +122,6 @@
 %pragma(java) jniclasscode=%{
 	static
 	{
-		System.load("/Users/nyholku/swig-experiments/out/experiment.dylib");
+		System.load("/Users/nyholku/swig-experiments/bin/experiment.dylib");
 	}
 %}
