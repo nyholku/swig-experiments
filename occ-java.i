@@ -1,13 +1,31 @@
 
 %module OccJava
+%{
+#include "Standard_Type.hxx"
+#include "Standard_Handle.hxx"
+#include "Standard_Transient.hxx"
+%}
 
 %exception  {
     try {
         $action
     } catch (Standard_Failure ex) {
        std::cerr << ex.GetMessageString() << std::endl;
+        SWIG_JavaThrowException(jenv, SWIG_JavaRuntimeException, Standard_Failure::Caught()->DynamicType()->Name());
     }
 }
+/*%exception
+{
+	try
+	{
+		$action
+	}
+	catch(Standard_Failure)
+	{
+		SWIG_JavaThrowException(jenv, SWIG_JavaRuntimeException, Standard_Failure::Caught()->DynamicType()->Name());
+		return $null;
+	}
+}*/
 
 %include <occ_handle.i>
 //%include <gp.i>
@@ -95,10 +113,23 @@
 %include "gp_Cylinder.hxx"
 %include "gp_Elips2d.hxx"
 
+%include "Standard.i"
+
+class Geom_Surface;
+
+%typemap(javaout) opencascade::handle<Geom_Surface>,opencascade::handle<Geom_Surface>* {
+    long cPtr = $jnicall;
+    return (Geom_Surface)Standard_Transient.downcastHandle(cPtr, Geom_Surface.class);
+}
+
+
 %include "Standard_Transient.hxx"
 
 
 %include "Patched_Standard_Handle.hxx" // NOTE! patched!
+
+
+
 
 
 %include "TopoDS.i"
@@ -212,6 +243,7 @@
 %include "IGESControl_Reader.hxx"
 %include "BRepLib.hxx"
 %include "BRepTools.hxx"
+
 
 %include "experiment-cc-code.hxx"
 
@@ -328,13 +360,12 @@
 
 #include "experiment-cc-code.hxx"
 
-#include "koe.hxx"
 %}
 
 // load the native library
 %pragma(java) jniclasscode=%{
 	static
 	{
-		System.load("/Users/nyholku/swig-experiments/bin/experiment.dylib");
+		System.load("/Users/nyholku/swig-experiments/bin/libOccJava.dylib");
 	}
 %}
