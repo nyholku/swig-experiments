@@ -56,6 +56,8 @@
 #include "Standard_Handle.hxx"
 #include "NCollection_List.hxx"
 #include "TopTools_ListOfShape.hxx"
+
+/*
 #include "TopAbs.hxx"
 #include "TopAbs_ShapeEnum.hxx"
 #include "TopoDS_TShape.hxx"
@@ -70,12 +72,9 @@
 #include "TopExp_Explorer.hxx"
 #include "TopoDS_Compound.hxx"
 #include "TopoDS_Builder.hxx"
+*/
 
-#include "TopAbs.hxx"
-#include "TopAbs_ShapeEnum.hxx"
 #include "TopoDS_ListOfShape.hxx"
-#include "TopoDS_TShape.hxx"
-#include "TopLoc_Location.hxx"
 
 %}
 
@@ -175,22 +174,23 @@ OCC_TRANSIENT(Patched_Standard_Handle)
 %include "Standard_Type.hxx"
 
 %include "TopoDS_Shape.hxx"
-%include "TopAbs.hxx"
-%include "TopAbs_ShapeEnum.hxx"
-%include "TopoDS_TShape.hxx"
-%include "TopoDS_Shape.hxx"
-%include "TopoDS_Solid.hxx"
-%include "TopoDS_CompSolid.hxx"
-%include "TopoDS_Face.hxx"
-%include "TopoDS_Shell.hxx"
-%include "TopoDS_Edge.hxx"
-%include "TopoDS_Vertex.hxx"
-%include "TopoDS_Wire.hxx"
-%include "TopLoc_Location.hxx"
-%include "TopoDS_Iterator.hxx"
-%include "TopExp_Explorer.hxx"
-%include "TopoDS_Compound.hxx"
-%include "TopoDS_Builder.hxx"
+
+OCC_ROOT(TopAbs)
+OCC_ROOT(TopAbs_ShapeEnum)
+OCC_ROOT(TopoDS_TShape)
+OCC_ROOT(TopoDS_Shape)
+OCC_ROOT(TopoDS_Solid)
+OCC_ROOT(TopoDS_CompSolid)
+OCC_ROOT(TopoDS_Face)
+OCC_ROOT(TopoDS_Shell)
+OCC_ROOT(TopoDS_Edge)
+OCC_ROOT(TopoDS_Vertex)
+OCC_ROOT(TopoDS_Wire)
+OCC_ROOT(TopLoc_Location)
+OCC_ROOT(TopoDS_Iterator)
+OCC_ROOT(TopExp_Explorer)
+OCC_ROOT(TopoDS_Compound)
+OCC_ROOT(TopoDS_Builder)
 
 
 %include "NCollection_List.hxx"
