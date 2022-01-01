@@ -13,14 +13,21 @@ all:
 	mkdir $(swigout)/occjava
 	rm -r -f ./$(output)
 	mkdir $(output)
-	gcc -std=c++11 -c -I$(occ_headers) -o $(swigout)/experiment-cc-code.so experiment-cc-code.cxx
-	swig -java -package occjava -I$(typetraits) -cpperraswarn -I$(occ_headers) -outdir $(swigout)/occjava  -c++ -java occ-java.i
-	gcc -std=c++11 -c -I. -I$(occ_headers) -I$(jni_headers) -I$(jni_darwin_headers) -o $(output)/experiment-cc-code_wrap.so occ-java_wrap.cxx
-	gcc -std=c++11 \
+	swig \
+		-java \
+		-package occjava \
+		-I$(typetraits) \
+		-cpperraswarn \
+		-I$(occ_headers) \
+		-outdir $(swigout)/occjava  \
+		-c++ -java \
+		occ-java.i
+	gcc -Wno-deprecated-declarations -std=c++11 \
 		-undefined dynamic_lookup \
-		-o $(output)/experiment.dylib -shared -I. \
+		-o $(output)/libOccJava.dylib -shared -I. \
 		-I$(occ_headers) -I$(jni_headers) \
-		-I$(jni_darwin_headers) experiment-cc-code.cxx \
+		-I$(jni_darwin_headers) \
+		experiment-cc-code.cxx \
 		occ-java_wrap.cxx \
 		-L/usr/local/lib -Wl,-rpath,/usr/local/lib \
 		-lTKernel \
