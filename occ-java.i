@@ -1,5 +1,6 @@
 
 %module OccJava
+// %rename("%(firstuppercase)s") ""; // foo_bar -> fooBar; FooBar -> fooBar
 
 //-----------------------------------------------------------------------------
 %define OCC_TRANSIENT(classname)
@@ -13,8 +14,8 @@
 %include "classname.hxx"
 
 %enddef
-//-----------------------------------------------------------------------------
 
+//-----------------------------------------------------------------------------
 %define OCC_ROOT(classname)
 
 %{
@@ -24,6 +25,26 @@
 %include "classname.hxx"
 
 %enddef
+
+//-----------------------------------------------------------------------------
+%define OCC_GP_AUX(classname , filename)
+
+%{
+#include #filename
+%}
+
+%rename(GP_ ## classname) gp_ ## classname;
+
+%include #filename
+
+%enddef
+//-----------------------------------------------------------------------------
+%define OCC_GP(classname)
+
+OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
+
+%enddef
+
 //-----------------------------------------------------------------------------
 
 %{ // #include all the files the C++ wrapper needs
@@ -34,24 +55,7 @@
 #include "Standard_TypeDef.hxx"
 #include "Standard_Handle.hxx"
 #include "Standard_Type.hxx"
-#include "gp_XYZ.hxx"
-#include "gp_Pln.hxx"
-#include "gp_Pnt.hxx"
-#include "gp_Dir.hxx"
-#include "gp_Pnt2d.hxx"
-#include "gp_Dir2d.hxx"
-#include "gp_Vec.hxx"
-#include "gp_Ax1.hxx"
-#include "gp_Ax2.hxx"
-#include "gp_Ax3.hxx"
-#include "gp_Ax2d.hxx"
-#include "gp_Ax22d.hxx"
-#include "gp_Trsf.hxx"
-#include "gp_Quaternion.hxx"
-#include "gp_Circ.hxx"
-#include "gp_GTrsf2d.hxx"
-#include "gp_Cylinder.hxx"
-#include "gp_Elips2d.hxx"
+
 
 #include "Standard_Handle.hxx"
 #include "NCollection_List.hxx"
@@ -93,28 +97,6 @@
 
 %occ_handle(Standard_Type)
 
-//%occ_handle(BRepPrim_Wedge)
-//%occ_handle(BRepPrimAPI_MakeBox)
-
-%rename(GP_XYZ) gp_XYZ;
-%rename(GP_Pln) gp_Pln;
-%rename(GP_Pnt) gp_Pnt;
-%rename(GP_Dir) gp_Dir;
-%rename(GP_Pnt2d) gp_Pnt2d;
-%rename(GP_Dir2d) gp_Dir2d;
-%rename(GP_Vec) gp_Vec;
-%rename(GP_Ax1) gp_Ax1;
-%rename(GP_Ax2) gp_Ax2;
-%rename(GP_Ax3) gp_Ax3;
-%rename(GP_Ax2d) gp_Ax2d;
-%rename(GP_Ax22d) gp_Ax22d;
-%rename(GP_Trsf) gp_Trsf;
-%rename(GP_Quaternion) gp_Quaternion;
-%rename(GP_Circ) gp_Circ;
-%rename(GP_GTrsf2d) gp_GTrsf2d;
-%rename(GP_Cylinder) gp_Cylinder;
-%rename(GP_Elips2d) gp_Elips2d;
-
 %include "Standard_Address.hxx"
 %include "Standard_math.hxx"
 %include "Standard_TypeDef.hxx"
@@ -124,24 +106,24 @@
 %include "Standard.hxx"
 %include "Standard_PrimitiveTypes.hxx"
 
-%include "gp_XYZ.hxx"
-%include "gp_Pln.hxx"
-%include "gp_Pnt.hxx"
-%include "gp_Dir.hxx"
-%include "gp_Pnt2d.hxx"
-%include "gp_Dir2d.hxx"
-%include "gp_Vec.hxx"
-%include "gp_Ax1.hxx"
-%include "gp_Ax2.hxx"
-%include "gp_Ax3.hxx"
-%include "gp_Ax2d.hxx"
-%include "gp_Ax22d.hxx"
-%include "gp_Trsf.hxx"
-%include "gp_Quaternion.hxx"
-%include "gp_Circ.hxx"
-%include "gp_GTrsf2d.hxx"
-%include "gp_Cylinder.hxx"
-%include "gp_Elips2d.hxx"
+OCC_GP(XYZ)
+OCC_GP(Pln)
+OCC_GP(Pnt)
+OCC_GP(Dir)
+OCC_GP(Pnt2d)
+OCC_GP(Dir2d)
+OCC_GP(Vec)
+OCC_GP(Ax1)
+OCC_GP(Ax2)
+OCC_GP(Ax3)
+OCC_GP(Ax2d)
+OCC_GP(Ax22d)
+OCC_GP(Trsf)
+OCC_GP(Quaternion)
+OCC_GP(Circ)
+OCC_GP(GTrsf2d)
+OCC_GP(Cylinder)
+OCC_GP(Elips2d)
 
 %include "Standard.i"
 
@@ -153,6 +135,7 @@ class Geom_Surface;
 }
 
 %include "TopoDS.i"
+
 OCC_TRANSIENT(Standard_Transient)
 OCC_TRANSIENT(Patched_Standard_Handle)
 
