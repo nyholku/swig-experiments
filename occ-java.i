@@ -214,7 +214,6 @@ OCC_TRANSIENT(Patched_Standard_Handle)
 
 %rename(getShape) BRepBuilderAPI_MakeShape::operator TopoDS_Shape();
 
-%include "Standard_Real.hxx"
 %rename(getShell) BRepPrimAPI_MakeBox::operator TopoDS_Shell();
 %rename(getSolid) BRepPrimAPI_MakeBox::operator TopoDS_Solid();
 %rename(getEdge) BRepBuilderAPI_MakeEdge::operator TopoDS_Edge();
@@ -227,8 +226,6 @@ OCC_TRANSIENT(Patched_Standard_Handle)
 %rename(getSolid) BRepPrimAPI_MakeOneAxis::operator TopoDS_Solid();
 
 %include "NCollection_BaseAllocator.hxx"
-%include "Standard_Integer.hxx"
-%include "Standard_Boolean.hxx"
 
 OCC_ROOT(BRepBuilderAPI_Command)
 OCC_ROOT(BRepBuilderAPI_MakeShape)
@@ -258,8 +255,6 @@ OCC_ROOT(BRepFilletAPI_MakeFillet)
 OCC_ROOT(BRepLib)
 OCC_ROOT(BRepTools)
 OCC_ROOT(BRep_Tool)
-
-
 
 OCC_TRANSIENT(Geom_Geometry)
 OCC_TRANSIENT(Geom_Surface)
