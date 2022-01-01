@@ -77,17 +77,6 @@
 #include "TopoDS_TShape.hxx"
 #include "TopLoc_Location.hxx"
 
-#include "GC_MakeArcOfCircle.hxx"
-#include "GC_MakeSegment.hxx"
-#include "GCE2d_Root.hxx"
-#include "GCE2d_MakeSegment.hxx"
-
-#include "XSControl_Reader.hxx"
-#include "STEPControl_Reader.hxx"
-#include "STEPControl_StepModelType.hxx"
-#include "STEPControl_Writer.hxx"
-#include "IGESControl_Reader.hxx"
-
 %}
 
 %exception  {
@@ -208,28 +197,19 @@ OCC_TRANSIENT(Patched_Standard_Handle)
 %include "TopTools_ListOfShape.hxx"
 %template(TopTools_ListOfShape) NCollection_List<TopoDS_Shape>;
 
-
-
-
-
 %rename(getShape) BRepBuilderAPI_MakeShape::operator TopoDS_Shape();
-
 %rename(getShell) BRepPrimAPI_MakeBox::operator TopoDS_Shell();
 %rename(getSolid) BRepPrimAPI_MakeBox::operator TopoDS_Solid();
 %rename(getEdge) BRepBuilderAPI_MakeEdge::operator TopoDS_Edge();
 %rename(getWire) BRepBuilderAPI_MakeWire::operator TopoDS_Wire();
 %rename(getFace) BRepBuilderAPI_MakeFace::operator TopoDS_Face();
-
-
 %rename(getShell) BRepPrimAPI_MakeOneAxis::operator TopoDS_Shell();
 %rename(getFace) BRepPrimAPI_MakeOneAxis::operator TopoDS_Face();
 %rename(getSolid) BRepPrimAPI_MakeOneAxis::operator TopoDS_Solid();
 
-%include "NCollection_BaseAllocator.hxx"
 
 OCC_ROOT(BRepBuilderAPI_Command)
 OCC_ROOT(BRepBuilderAPI_MakeShape)
-
 OCC_ROOT(BRepPrim_GWedge)
 OCC_ROOT(BRepPrimAPI_MakeSweep)
 OCC_ROOT(BRepPrimAPI_MakeOneAxis)
@@ -271,18 +251,17 @@ OCC_TRANSIENT(Geom2d_Ellipse)
 OCC_TRANSIENT(Geom2d_BoundedCurve)
 OCC_TRANSIENT(Geom2d_TrimmedCurve)
 
-%include "GC_MakeArcOfCircle.hxx"
-%include "GC_MakeSegment.hxx"
-%include "GCE2d_Root.hxx"
-%include "GCE2d_MakeSegment.hxx"
-
-%include "XSControl_Reader.hxx"
-%include "STEPControl_Reader.hxx"
-%include "STEPControl_StepModelType.hxx"
-%include "STEPControl_Writer.hxx"
-%include "IGESControl_Reader.hxx"
-%include "BRepLib.hxx"
-%include "BRepTools.hxx"
+OCC_ROOT(GC_MakeArcOfCircle)
+OCC_ROOT(GC_MakeSegment)
+OCC_ROOT(GCE2d_Root)
+OCC_ROOT(GCE2d_MakeSegment)
+OCC_ROOT(XSControl_Reader)
+OCC_ROOT(STEPControl_Reader)
+OCC_ROOT(STEPControl_StepModelType)
+OCC_ROOT(STEPControl_Writer)
+OCC_ROOT(IGESControl_Reader)
+OCC_ROOT(BRepLib)
+OCC_ROOT(BRepTools)
 
 
 // load the native library
