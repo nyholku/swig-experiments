@@ -57,27 +57,10 @@
 #include "NCollection_List.hxx"
 #include "TopTools_ListOfShape.hxx"
 
-/*
-#include "TopAbs.hxx"
-#include "TopAbs_ShapeEnum.hxx"
-#include "TopoDS_TShape.hxx"
-#include "TopoDS_Shape.hxx"
-#include "TopoDS_Face.hxx"
-#include "TopoDS_Shell.hxx"
-#include "TopoDS_Edge.hxx"
-#include "TopoDS_Vertex.hxx"
-#include "TopoDS_Wire.hxx"
-#include "TopLoc_Location.hxx"
-#include "TopoDS_Iterator.hxx"
-#include "TopExp_Explorer.hxx"
-#include "TopoDS_Compound.hxx"
-#include "TopoDS_Builder.hxx"
-*/
-
 #include "TopoDS_ListOfShape.hxx"
-
 %}
 
+//-----------------------------------------------------------------------------
 %exception  {
     try {
         $action
@@ -87,6 +70,7 @@
     }
 }
 
+//-----------------------------------------------------------------------------
 %include <occ_handle.i>
 
 %occ_handle(Standard_Transient)
@@ -96,7 +80,6 @@
 %occ_handle(Geom_CylindricalSurface)
 %occ_handle(Geom_Plane)
 %occ_handle(TopoDS_TShape)
-%occ_handle(Standard_Type)
 %occ_handle(Geom_Curve)
 %occ_handle(Geom_BoundedCurve)
 %occ_handle(Geom_TrimmedCurve)
@@ -107,6 +90,8 @@
 %occ_handle(Geom2d_BoundedCurve)
 %occ_handle(Geom2d_TrimmedCurve)
 %occ_handle(NCollection_BaseAllocator)
+
+%occ_handle(Standard_Type)
 
 //%occ_handle(BRepPrim_Wedge)
 //%occ_handle(BRepPrimAPI_MakeBox)
