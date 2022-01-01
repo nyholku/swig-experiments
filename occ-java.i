@@ -1,6 +1,31 @@
 
 %module OccJava
 
+//-----------------------------------------------------------------------------
+%define OCC_TRANSIENT(classname)
+
+%occ_handle(classname)
+
+%{
+#include "classname.hxx"
+%}
+
+%include "classname.hxx"
+
+%enddef
+//-----------------------------------------------------------------------------
+
+%define OCC_ROOT(classname)
+
+%{
+#include "classname.hxx"
+%}
+
+%include "classname.hxx"
+
+%enddef
+//-----------------------------------------------------------------------------
+
 %{ // #include all the files the C++ wrapper needs
 #include <type_traits>
 #include "Standard_Std.hxx"
@@ -46,68 +71,22 @@
 #include "TopoDS_Compound.hxx"
 #include "TopoDS_Builder.hxx"
 
-#include "GC_Root.hxx"
-#include "BRepPrim_GWedge.hxx"
-#include "BRepPrimAPI_MakeSweep.hxx"
-#include "BRepPrimAPI_MakeOneAxis.hxx"
-#include "BRepAlgoAPI_Algo.hxx"
-#include "BRepAlgoAPI_BuilderAlgo.hxx"
-#include "BRepAlgoAPI_BooleanOperation.hxx"
-#include "BRepOffsetAPI_MakeOffsetShape.hxx"
-#include "BRepOffsetAPI_MakeThickSolid.hxx"
-#include "BRepOffsetAPI_ThruSections.hxx"
-
-
-#include "BRepPrim_Wedge.hxx"
-#include "BRepBuilderAPI_Command.hxx"
-#include "BRepBuilderAPI_MakeShape.hxx"
-#include "BRepBuilderAPI_ModifyShape.hxx"
-#include "BRepFilletAPI_LocalOperation.hxx"
-#include "BRepPrimAPI_MakeBox.hxx"
-#include "BRepBuilderAPI_MakeEdge.hxx"
-#include "BRepBuilderAPI_MakeWire.hxx"
-#include "BRepBuilderAPI_Transform.hxx"
-#include "BRepBuilderAPI_MakeFace.hxx"
-#include "BRep_Builder.hxx"
-#include "BRepFilletAPI_MakeFillet.hxx"
-#include "BRepPrimAPI_MakePrism.hxx"
-#include "BRepPrimAPI_MakeCylinder.hxx"
-#include "BRepAlgoAPI_Fuse.hxx"
-
 #include "TopAbs.hxx"
 #include "TopAbs_ShapeEnum.hxx"
 #include "TopoDS_ListOfShape.hxx"
 #include "TopoDS_TShape.hxx"
 #include "TopLoc_Location.hxx"
 
-#include "BRep_Tool.hxx"
-#include "Geom_Geometry.hxx"
-#include "Geom_Surface.hxx"
-#include "Geom_ElementarySurface.hxx"
-#include "Geom_CylindricalSurface.hxx"
-#include "Geom_Plane.hxx"
-#include "Geom_Curve.hxx"
-#include "Geom_BoundedCurve.hxx"
-#include "Geom_TrimmedCurve.hxx"
 #include "GC_MakeArcOfCircle.hxx"
 #include "GC_MakeSegment.hxx"
 #include "GCE2d_Root.hxx"
 #include "GCE2d_MakeSegment.hxx"
-
-#include "Geom2d_Geometry.hxx"
-#include "Geom2d_Curve.hxx"
-#include "Geom2d_Conic.hxx"
-#include "Geom2d_Ellipse.hxx"
-#include "Geom2d_BoundedCurve.hxx"
-#include "Geom2d_TrimmedCurve.hxx"
 
 #include "XSControl_Reader.hxx"
 #include "STEPControl_Reader.hxx"
 #include "STEPControl_StepModelType.hxx"
 #include "STEPControl_Writer.hxx"
 #include "IGESControl_Reader.hxx"
-#include "BRepLib.hxx"
-#include "BRepTools.hxx"
 
 %}
 
@@ -141,9 +120,6 @@
 %occ_handle(Geom2d_TrimmedCurve)
 %occ_handle(NCollection_BaseAllocator)
 
-%occ_handle(Base)
-%occ_handle(Derived)
-
 //%occ_handle(BRepPrim_Wedge)
 //%occ_handle(BRepPrimAPI_MakeBox)
 
@@ -166,11 +142,6 @@
 %rename(GP_Cylinder) gp_Cylinder;
 %rename(GP_Elips2d) gp_Elips2d;
 
-//%include "__config"
-//%include "version"
-//%include "local_cstddef"
-//%include "type_traits"
-//%include "Standard_Std.hxx"
 %include "Standard_Address.hxx"
 %include "Standard_math.hxx"
 %include "Standard_TypeDef.hxx"
@@ -179,8 +150,6 @@
 %include "Standard_DefineAlloc.hxx"
 %include "Standard.hxx"
 %include "Standard_PrimitiveTypes.hxx"
-
-
 
 %include "gp_XYZ.hxx"
 %include "gp_Pln.hxx"
@@ -210,17 +179,9 @@ class Geom_Surface;
     return (Geom_Surface)Standard_Transient.downcastHandle(cPtr, Geom_Surface.class);
 }
 
-
-%include "Standard_Transient.hxx"
-
-
-%include "Patched_Standard_Handle.hxx" // NOTE! patched!
-
-
-
-
-
 %include "TopoDS.i"
+OCC_TRANSIENT(Standard_Transient)
+OCC_TRANSIENT(Patched_Standard_Handle)
 
 %include "Standard_Type.hxx"
 
@@ -247,82 +208,78 @@ class Geom_Surface;
 %include "TopTools_ListOfShape.hxx"
 %template(TopTools_ListOfShape) NCollection_List<TopoDS_Shape>;
 
-%include "GC_Root.hxx"
-%include "BRepPrim_GWedge.hxx"
 
 
-%include "BRepPrim_Wedge.hxx"
+
+
 %rename(getShape) BRepBuilderAPI_MakeShape::operator TopoDS_Shape();
-
-%include "BRepBuilderAPI_Command.hxx"
-%include "BRepBuilderAPI_MakeShape.hxx"
-%include "BRepBuilderAPI_ModifyShape.hxx"
-%include "BRepFilletAPI_LocalOperation.hxx"
 
 %include "Standard_Real.hxx"
 %rename(getShell) BRepPrimAPI_MakeBox::operator TopoDS_Shell();
 %rename(getSolid) BRepPrimAPI_MakeBox::operator TopoDS_Solid();
-%include "BRepPrimAPI_MakeBox.hxx"
 %rename(getEdge) BRepBuilderAPI_MakeEdge::operator TopoDS_Edge();
-%include "BRepBuilderAPI_MakeEdge.hxx"
 %rename(getWire) BRepBuilderAPI_MakeWire::operator TopoDS_Wire();
-%include "BRepBuilderAPI_MakeWire.hxx"
 %rename(getFace) BRepBuilderAPI_MakeFace::operator TopoDS_Face();
-%include "BRepBuilderAPI_MakeFace.hxx"
-%include "BRep_Builder.hxx"
-%include "BRep_Builder.lxx"
 
 
 %rename(getShell) BRepPrimAPI_MakeOneAxis::operator TopoDS_Shell();
 %rename(getFace) BRepPrimAPI_MakeOneAxis::operator TopoDS_Face();
 %rename(getSolid) BRepPrimAPI_MakeOneAxis::operator TopoDS_Solid();
-%include "BRepPrimAPI_MakeOneAxis.hxx"
-%include "BRepPrimAPI_MakeSweep.hxx"
-
 
 %include "NCollection_BaseAllocator.hxx"
 %include "Standard_Integer.hxx"
 %include "Standard_Boolean.hxx"
-%include "BRepBuilderAPI_MakeShape.hxx"
-%include "BOPAlgo_Options.hxx"
+
+OCC_ROOT(BRepBuilderAPI_Command)
+OCC_ROOT(BRepBuilderAPI_MakeShape)
+
+OCC_ROOT(BRepPrim_GWedge)
+OCC_ROOT(BRepPrimAPI_MakeSweep)
+OCC_ROOT(BRepPrimAPI_MakeOneAxis)
+OCC_ROOT(BRepAlgoAPI_Algo)
+OCC_ROOT(BRepAlgoAPI_BuilderAlgo)
+OCC_ROOT(BRepAlgoAPI_BooleanOperation)
+OCC_ROOT(BRepBuilderAPI_ModifyShape)
+OCC_ROOT(BRepFilletAPI_LocalOperation)
+OCC_ROOT(BRepBuilderAPI_MakeEdge)
+OCC_ROOT(BRepBuilderAPI_MakeWire)
+OCC_ROOT(BRepBuilderAPI_Transform)
+OCC_ROOT(BRepBuilderAPI_MakeFace)
+OCC_ROOT(BRepPrimAPI_MakeBox)
+OCC_ROOT(BRepPrimAPI_MakePrism)
+OCC_ROOT(BRepPrimAPI_MakeCylinder)
+OCC_ROOT(BRepAlgoAPI_Fuse)
+OCC_ROOT(BRepOffsetAPI_MakeOffsetShape)
+OCC_ROOT(BRepOffsetAPI_MakeThickSolid)
+OCC_ROOT(BRepOffsetAPI_ThruSections)
+OCC_ROOT(BRepPrim_Wedge)
+OCC_ROOT(BRep_Builder)
+OCC_ROOT(BRepFilletAPI_MakeFillet)
+OCC_ROOT(BRepLib)
+OCC_ROOT(BRepTools)
+OCC_ROOT(BRep_Tool)
 
 
-%include "BRepAlgoAPI_Algo.hxx"
-%include "BRepAlgoAPI_BuilderAlgo.hxx"
-%include "BRepAlgoAPI_BooleanOperation.hxx"
-%include "BRepOffsetAPI_MakeOffsetShape.hxx"
-%include "BRepOffsetAPI_MakeThickSolid.hxx"
-%include "BRepOffsetAPI_ThruSections.hxx"
 
-%include "BRepBuilderAPI_Transform.hxx"
-%include "BRepFilletAPI_MakeFillet.hxx"
-%include "BRepPrimAPI_MakePrism.hxx"
+OCC_TRANSIENT(Geom_Geometry)
+OCC_TRANSIENT(Geom_Surface)
+OCC_TRANSIENT(Geom_ElementarySurface)
+OCC_TRANSIENT(Geom_CylindricalSurface)
+OCC_TRANSIENT(Geom_Plane)
+OCC_TRANSIENT(Geom_Curve)
+OCC_TRANSIENT(Geom_BoundedCurve)
+OCC_TRANSIENT(Geom_TrimmedCurve)
+OCC_TRANSIENT(Geom2d_Geometry)
+OCC_TRANSIENT(Geom2d_Curve)
+OCC_TRANSIENT(Geom2d_Conic)
+OCC_TRANSIENT(Geom2d_Ellipse)
+OCC_TRANSIENT(Geom2d_BoundedCurve)
+OCC_TRANSIENT(Geom2d_TrimmedCurve)
 
-%include "BRepPrimAPI_MakeCylinder.hxx"
-%include "BRepAlgoAPI_Fuse.hxx"
-
-%include "BRep_Tool.hxx"
-
-
-%include "Geom_Geometry.hxx"
-%include "Geom_Surface.hxx"
-%include "Geom_ElementarySurface.hxx"
-%include "Geom_CylindricalSurface.hxx"
-%include "Geom_Plane.hxx"
-%include "Geom_Curve.hxx"
-%include "Geom_BoundedCurve.hxx"
-%include "Geom_TrimmedCurve.hxx"
 %include "GC_MakeArcOfCircle.hxx"
 %include "GC_MakeSegment.hxx"
 %include "GCE2d_Root.hxx"
 %include "GCE2d_MakeSegment.hxx"
-
-%include "Geom2d_Geometry.hxx"
-%include "Geom2d_Curve.hxx"
-%include "Geom2d_Conic.hxx"
-%include "Geom2d_Ellipse.hxx"
-%include "Geom2d_BoundedCurve.hxx"
-%include "Geom2d_TrimmedCurve.hxx"
 
 %include "XSControl_Reader.hxx"
 %include "STEPControl_Reader.hxx"
