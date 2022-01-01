@@ -1,6 +1,14 @@
 
 %module OccJava
 
+%exception  {
+    try {
+        $action
+    } catch (Standard_Failure ex) {
+       std::cerr << ex.GetMessageString() << std::endl;
+    }
+}
+
 %include <occ_handle.i>
 //%include <gp.i>
 
