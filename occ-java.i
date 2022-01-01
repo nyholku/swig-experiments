@@ -1,5 +1,5 @@
 
-%module experimentModule
+%module OccJava
 
 %include <occ_handle.i>
 //%include <gp.i>
@@ -93,16 +93,19 @@
 %include "Patched_Standard_Handle.hxx" // NOTE! patched!
 
 
+%include "TopoDS.i"
 
 %include "Standard_Type.hxx"
 
-
-
+%include "TopoDS_Shape.hxx"
 %include "TopAbs.hxx"
 %include "TopAbs_ShapeEnum.hxx"
 %include "TopoDS_TShape.hxx"
 %include "TopoDS_Shape.hxx"
+%include "TopoDS_Solid.hxx"
+%include "TopoDS_CompSolid.hxx"
 %include "TopoDS_Face.hxx"
+%include "TopoDS_Shell.hxx"
 %include "TopoDS_Edge.hxx"
 %include "TopoDS_Vertex.hxx"
 %include "TopoDS_Wire.hxx"
@@ -111,6 +114,7 @@
 %include "TopExp_Explorer.hxx"
 %include "TopoDS_Compound.hxx"
 %include "TopoDS_Builder.hxx"
+
 
 %include "NCollection_List.hxx"
 %include "TopTools_ListOfShape.hxx"
@@ -139,6 +143,8 @@
 %rename(getFace) BRepBuilderAPI_MakeFace::operator TopoDS_Face();
 %include "BRepBuilderAPI_MakeFace.hxx"
 %include "BRep_Builder.hxx"
+%include "BRep_Builder.lxx"
+
 
 %rename(getShell) BRepPrimAPI_MakeOneAxis::operator TopoDS_Shell();
 %rename(getFace) BRepPrimAPI_MakeOneAxis::operator TopoDS_Face();
@@ -193,7 +199,11 @@
 
 %include "XSControl_Reader.hxx"
 %include "STEPControl_Reader.hxx"
+%include "STEPControl_StepModelType.hxx"
+%include "STEPControl_Writer.hxx"
+%include "IGESControl_Reader.hxx"
 %include "BRepLib.hxx"
+%include "BRepTools.hxx"
 
 %include "experiment-cc-code.hxx"
 
@@ -233,6 +243,7 @@
 #include "TopoDS_TShape.hxx"
 #include "TopoDS_Shape.hxx"
 #include "TopoDS_Face.hxx"
+#include "TopoDS_Shell.hxx"
 #include "TopoDS_Edge.hxx"
 #include "TopoDS_Vertex.hxx"
 #include "TopoDS_Wire.hxx"
@@ -270,15 +281,12 @@
 #include "BRepPrimAPI_MakeCylinder.hxx"
 #include "BRepAlgoAPI_Fuse.hxx"
 
-
 #include "Standard_Handle.hxx"
 #include "Standard_Type.hxx"
 #include "TopAbs.hxx"
 #include "TopAbs_ShapeEnum.hxx"
 #include "TopoDS_ListOfShape.hxx"
 #include "TopoDS_TShape.hxx"
-#include "TopoDS_Shape.hxx"
-#include "TopoDS_Face.hxx"
 #include "TopLoc_Location.hxx"
 
 #include "BRep_Tool.hxx"
@@ -304,7 +312,11 @@
 
 #include "XSControl_Reader.hxx"
 #include "STEPControl_Reader.hxx"
+#include "STEPControl_StepModelType.hxx"
+#include "STEPControl_Writer.hxx"
+#include "IGESControl_Reader.hxx"
 #include "BRepLib.hxx"
+#include "BRepTools.hxx"
 
 #include "experiment-cc-code.hxx"
 

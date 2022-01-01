@@ -26,6 +26,7 @@ all:
 		-lTKernel \
 		-lTKPrim \
 		-lTKSTEP \
+		-lTKIGES \
 		-lTKFillet \
 		-lTKOffset \
 
