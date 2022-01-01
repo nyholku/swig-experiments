@@ -27,7 +27,6 @@ all:
 		-o $(output)/libOccJava.dylib -shared -I. \
 		-I$(occ_headers) -I$(jni_headers) \
 		-I$(jni_darwin_headers) \
-		experiment-cc-code.cxx \
 		occ-java_wrap.cxx \
 		-L/usr/local/lib -Wl,-rpath,/usr/local/lib \
 		-lTKernel \
@@ -38,8 +37,6 @@ all:
 		-lTKOffset \
 
 	javac -d $(output) -sourcepath $(swigout) $(swigout)/occjava/*.java
-	javac -d $(output) -classpath $(output) Experiment.java
-	java -cp $(output) Experiment
 
 java:
 	javac -d $(swigout) out/*.java

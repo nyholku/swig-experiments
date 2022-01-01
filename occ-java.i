@@ -1,9 +1,114 @@
 
 %module OccJava
-%{
-#include "Standard_Type.hxx"
+
+%{ // #include all the files the C++ wrapper needs
+#include <type_traits>
+#include "Standard_Std.hxx"
+#include "Standard_Address.hxx"
+#include "Standard_math.hxx"
+#include "Standard_TypeDef.hxx"
 #include "Standard_Handle.hxx"
-#include "Standard_Transient.hxx"
+#include "Standard_Type.hxx"
+#include "gp_XYZ.hxx"
+#include "gp_Pln.hxx"
+#include "gp_Pnt.hxx"
+#include "gp_Dir.hxx"
+#include "gp_Pnt2d.hxx"
+#include "gp_Dir2d.hxx"
+#include "gp_Vec.hxx"
+#include "gp_Ax1.hxx"
+#include "gp_Ax2.hxx"
+#include "gp_Ax3.hxx"
+#include "gp_Ax2d.hxx"
+#include "gp_Ax22d.hxx"
+#include "gp_Trsf.hxx"
+#include "gp_Quaternion.hxx"
+#include "gp_Circ.hxx"
+#include "gp_GTrsf2d.hxx"
+#include "gp_Cylinder.hxx"
+#include "gp_Elips2d.hxx"
+
+#include "Standard_Handle.hxx"
+#include "NCollection_List.hxx"
+#include "TopTools_ListOfShape.hxx"
+#include "TopAbs.hxx"
+#include "TopAbs_ShapeEnum.hxx"
+#include "TopoDS_TShape.hxx"
+#include "TopoDS_Shape.hxx"
+#include "TopoDS_Face.hxx"
+#include "TopoDS_Shell.hxx"
+#include "TopoDS_Edge.hxx"
+#include "TopoDS_Vertex.hxx"
+#include "TopoDS_Wire.hxx"
+#include "TopLoc_Location.hxx"
+#include "TopoDS_Iterator.hxx"
+#include "TopExp_Explorer.hxx"
+#include "TopoDS_Compound.hxx"
+#include "TopoDS_Builder.hxx"
+
+#include "GC_Root.hxx"
+#include "BRepPrim_GWedge.hxx"
+#include "BRepPrimAPI_MakeSweep.hxx"
+#include "BRepPrimAPI_MakeOneAxis.hxx"
+#include "BRepAlgoAPI_Algo.hxx"
+#include "BRepAlgoAPI_BuilderAlgo.hxx"
+#include "BRepAlgoAPI_BooleanOperation.hxx"
+#include "BRepOffsetAPI_MakeOffsetShape.hxx"
+#include "BRepOffsetAPI_MakeThickSolid.hxx"
+#include "BRepOffsetAPI_ThruSections.hxx"
+
+
+#include "BRepPrim_Wedge.hxx"
+#include "BRepBuilderAPI_Command.hxx"
+#include "BRepBuilderAPI_MakeShape.hxx"
+#include "BRepBuilderAPI_ModifyShape.hxx"
+#include "BRepFilletAPI_LocalOperation.hxx"
+#include "BRepPrimAPI_MakeBox.hxx"
+#include "BRepBuilderAPI_MakeEdge.hxx"
+#include "BRepBuilderAPI_MakeWire.hxx"
+#include "BRepBuilderAPI_Transform.hxx"
+#include "BRepBuilderAPI_MakeFace.hxx"
+#include "BRep_Builder.hxx"
+#include "BRepFilletAPI_MakeFillet.hxx"
+#include "BRepPrimAPI_MakePrism.hxx"
+#include "BRepPrimAPI_MakeCylinder.hxx"
+#include "BRepAlgoAPI_Fuse.hxx"
+
+#include "TopAbs.hxx"
+#include "TopAbs_ShapeEnum.hxx"
+#include "TopoDS_ListOfShape.hxx"
+#include "TopoDS_TShape.hxx"
+#include "TopLoc_Location.hxx"
+
+#include "BRep_Tool.hxx"
+#include "Geom_Geometry.hxx"
+#include "Geom_Surface.hxx"
+#include "Geom_ElementarySurface.hxx"
+#include "Geom_CylindricalSurface.hxx"
+#include "Geom_Plane.hxx"
+#include "Geom_Curve.hxx"
+#include "Geom_BoundedCurve.hxx"
+#include "Geom_TrimmedCurve.hxx"
+#include "GC_MakeArcOfCircle.hxx"
+#include "GC_MakeSegment.hxx"
+#include "GCE2d_Root.hxx"
+#include "GCE2d_MakeSegment.hxx"
+
+#include "Geom2d_Geometry.hxx"
+#include "Geom2d_Curve.hxx"
+#include "Geom2d_Conic.hxx"
+#include "Geom2d_Ellipse.hxx"
+#include "Geom2d_BoundedCurve.hxx"
+#include "Geom2d_TrimmedCurve.hxx"
+
+#include "XSControl_Reader.hxx"
+#include "STEPControl_Reader.hxx"
+#include "STEPControl_StepModelType.hxx"
+#include "STEPControl_Writer.hxx"
+#include "IGESControl_Reader.hxx"
+#include "BRepLib.hxx"
+#include "BRepTools.hxx"
+
 %}
 
 %exception  {
@@ -14,25 +119,8 @@
         SWIG_JavaThrowException(jenv, SWIG_JavaRuntimeException, Standard_Failure::Caught()->DynamicType()->Name());
     }
 }
-/*%exception
-{
-	try
-	{
-		$action
-	}
-	catch(Standard_Failure)
-	{
-		SWIG_JavaThrowException(jenv, SWIG_JavaRuntimeException, Standard_Failure::Caught()->DynamicType()->Name());
-		return $null;
-	}
-}*/
 
 %include <occ_handle.i>
-//%include <gp.i>
-
-
-
-//%rename(double) Standard_Real;
 
 %occ_handle(Standard_Transient)
 %occ_handle(Geom_Geometry)
@@ -244,123 +332,6 @@ class Geom_Surface;
 %include "BRepLib.hxx"
 %include "BRepTools.hxx"
 
-
-%include "experiment-cc-code.hxx"
-
-
-%{
-#include <type_traits>
-#include "Standard_Std.hxx"
-#include "Standard_Address.hxx"
-#include "Standard_math.hxx"
-#include "Standard_TypeDef.hxx"
-#include "gp_XYZ.hxx"
-#include "gp_Pln.hxx"
-#include "gp_Pnt.hxx"
-#include "gp_Dir.hxx"
-#include "gp_Pnt2d.hxx"
-#include "gp_Dir2d.hxx"
-#include "gp_Vec.hxx"
-#include "gp_Ax1.hxx"
-#include "gp_Ax2.hxx"
-#include "gp_Ax3.hxx"
-#include "gp_Ax2d.hxx"
-#include "gp_Ax22d.hxx"
-#include "gp_Trsf.hxx"
-#include "gp_Quaternion.hxx"
-#include "gp_Circ.hxx"
-#include "gp_GTrsf2d.hxx"
-#include "gp_Cylinder.hxx"
-#include "gp_Elips2d.hxx"
-
-
-#include "Standard_Handle.hxx"
-#include "NCollection_List.hxx"
-#include "TopTools_ListOfShape.hxx"
-#include "Standard_Type.hxx"
-#include "TopAbs.hxx"
-#include "TopAbs_ShapeEnum.hxx"
-#include "TopoDS_TShape.hxx"
-#include "TopoDS_Shape.hxx"
-#include "TopoDS_Face.hxx"
-#include "TopoDS_Shell.hxx"
-#include "TopoDS_Edge.hxx"
-#include "TopoDS_Vertex.hxx"
-#include "TopoDS_Wire.hxx"
-#include "TopLoc_Location.hxx"
-#include "TopoDS_Iterator.hxx"
-#include "TopExp_Explorer.hxx"
-#include "TopoDS_Compound.hxx"
-#include "TopoDS_Builder.hxx"
-
-#include "GC_Root.hxx"
-#include "BRepPrim_GWedge.hxx"
-#include "BRepPrimAPI_MakeSweep.hxx"
-#include "BRepPrimAPI_MakeOneAxis.hxx"
-#include "BRepAlgoAPI_Algo.hxx"
-#include "BRepAlgoAPI_BuilderAlgo.hxx"
-#include "BRepAlgoAPI_BooleanOperation.hxx"
-#include "BRepOffsetAPI_MakeOffsetShape.hxx"
-#include "BRepOffsetAPI_MakeThickSolid.hxx"
-#include "BRepOffsetAPI_ThruSections.hxx"
-
-
-#include "BRepPrim_Wedge.hxx"
-#include "BRepBuilderAPI_Command.hxx"
-#include "BRepBuilderAPI_MakeShape.hxx"
-#include "BRepBuilderAPI_ModifyShape.hxx"
-#include "BRepFilletAPI_LocalOperation.hxx"
-#include "BRepPrimAPI_MakeBox.hxx"
-#include "BRepBuilderAPI_MakeEdge.hxx"
-#include "BRepBuilderAPI_MakeWire.hxx"
-#include "BRepBuilderAPI_Transform.hxx"
-#include "BRepBuilderAPI_MakeFace.hxx"
-#include "BRep_Builder.hxx"
-#include "BRepFilletAPI_MakeFillet.hxx"
-#include "BRepPrimAPI_MakePrism.hxx"
-#include "BRepPrimAPI_MakeCylinder.hxx"
-#include "BRepAlgoAPI_Fuse.hxx"
-
-#include "Standard_Handle.hxx"
-#include "Standard_Type.hxx"
-#include "TopAbs.hxx"
-#include "TopAbs_ShapeEnum.hxx"
-#include "TopoDS_ListOfShape.hxx"
-#include "TopoDS_TShape.hxx"
-#include "TopLoc_Location.hxx"
-
-#include "BRep_Tool.hxx"
-#include "Geom_Geometry.hxx"
-#include "Geom_Surface.hxx"
-#include "Geom_ElementarySurface.hxx"
-#include "Geom_CylindricalSurface.hxx"
-#include "Geom_Plane.hxx"
-#include "Geom_Curve.hxx"
-#include "Geom_BoundedCurve.hxx"
-#include "Geom_TrimmedCurve.hxx"
-#include "GC_MakeArcOfCircle.hxx"
-#include "GC_MakeSegment.hxx"
-#include "GCE2d_Root.hxx"
-#include "GCE2d_MakeSegment.hxx"
-
-#include "Geom2d_Geometry.hxx"
-#include "Geom2d_Curve.hxx"
-#include "Geom2d_Conic.hxx"
-#include "Geom2d_Ellipse.hxx"
-#include "Geom2d_BoundedCurve.hxx"
-#include "Geom2d_TrimmedCurve.hxx"
-
-#include "XSControl_Reader.hxx"
-#include "STEPControl_Reader.hxx"
-#include "STEPControl_StepModelType.hxx"
-#include "STEPControl_Writer.hxx"
-#include "IGESControl_Reader.hxx"
-#include "BRepLib.hxx"
-#include "BRepTools.hxx"
-
-#include "experiment-cc-code.hxx"
-
-%}
 
 // load the native library
 %pragma(java) jniclasscode=%{
