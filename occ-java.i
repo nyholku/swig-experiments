@@ -53,12 +53,10 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 #include "Standard_Address.hxx"
 #include "Standard_math.hxx"
 #include "Standard_TypeDef.hxx"
-#include "Standard_Handle.hxx"
 #include "Standard_Type.hxx"
 #include "Standard_Handle.hxx"
 #include "NCollection_List.hxx"
 #include "TopTools_ListOfShape.hxx"
-#include "TopoDS_ListOfShape.hxx"
 %}
 
 //-----------------------------------------------------------------------------
@@ -76,8 +74,6 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 //
 %include <occ_handle.i>
 
-%occ_handle(Standard_Transient)
-%occ_handle(TopoDS_TShape)
 %occ_handle(Standard_Type)
 
 %include "Standard_Address.hxx"
@@ -91,6 +87,7 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 
 %include "Standard.i"
 %include "TopoDS.i"
+
 OCC_TRANSIENT(Standard_Transient)
 OCC_TRANSIENT(Patched_Standard_Handle)
 
@@ -121,7 +118,6 @@ OCC_GP(Elips2d)
 
 OCC_ROOT(TopAbs)
 OCC_ROOT(TopAbs_ShapeEnum)
-OCC_ROOT(TopoDS_TShape)
 OCC_ROOT(TopoDS_Shape)
 OCC_ROOT(TopoDS_Solid)
 OCC_ROOT(TopoDS_CompSolid)
@@ -140,6 +136,7 @@ OCC_ROOT(TopoDS_Compound)
 %include "TopTools_ListOfShape.hxx"
 %template(TopTools_ListOfShape) NCollection_List<TopoDS_Shape>;
 
+OCC_TRANSIENT(TopoDS_TShape)
 OCC_TRANSIENT(Geom_Geometry)
 OCC_TRANSIENT(Geom_Surface)
 OCC_TRANSIENT(Geom_ElementarySurface)
