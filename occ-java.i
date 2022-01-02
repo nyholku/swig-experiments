@@ -46,8 +46,8 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 %enddef
 
 //-----------------------------------------------------------------------------
-
-%{ // #include all the files the C++ wrapper needs
+// #include all the files the C++ wrapper needs
+%{
 #include <type_traits>
 #include "Standard_Std.hxx"
 #include "Standard_Address.hxx"
@@ -55,16 +55,14 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 #include "Standard_TypeDef.hxx"
 #include "Standard_Handle.hxx"
 #include "Standard_Type.hxx"
-
-
 #include "Standard_Handle.hxx"
 #include "NCollection_List.hxx"
 #include "TopTools_ListOfShape.hxx"
-
 #include "TopoDS_ListOfShape.hxx"
 %}
 
 //-----------------------------------------------------------------------------
+// Propagate all OCC exceptions to Java
 %exception  {
     try {
         $action
@@ -75,6 +73,7 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 }
 
 //-----------------------------------------------------------------------------
+//
 %include <occ_handle.i>
 
 %occ_handle(Standard_Transient)
@@ -110,6 +109,8 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 %include "Standard.i"
 %include "TopoDS.i"
 
+//-----------------------------------------------------------------------------
+
 class Geom_Surface;
 
 %typemap(javaout) opencascade::handle<Geom_Surface>,opencascade::handle<Geom_Surface>* {
@@ -117,6 +118,8 @@ class Geom_Surface;
     return (Geom_Surface)Standard_Transient.downcastHandle(cPtr, Geom_Surface.class);
 }
 
+//-----------------------------------------------------------------------------
+//
 OCC_GP(XYZ)
 OCC_GP(Pln)
 OCC_GP(Pnt)
