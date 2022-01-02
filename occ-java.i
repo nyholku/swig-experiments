@@ -73,16 +73,14 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 //
 %include <occ_handle.i>
 
-%occ_handle(Standard_Type)
 
 %include "Standard_Address.hxx"
-%include "Standard_math.hxx"
 %include "Standard_TypeDef.hxx"
 %include "Standard_Macro.hxx"
 %include "Standard_DefineAlloc.hxx"
 %include "Standard.hxx"
-%include "Standard_PrimitiveTypes.hxx"
 
+%occ_handle(Standard_Type)
 
 %include "Standard.i"
 %include "TopoDS.i"
