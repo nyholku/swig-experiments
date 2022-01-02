@@ -59,34 +59,23 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 %}
 
 //-----------------------------------------------------------------------------
-// Propagate all OCC exceptions to Java
-%exception  {
-    try {
-        $action
-    } catch (Standard_Failure ex) {
-       std::cerr << ex.GetMessageString() << std::endl;
-        SWIG_JavaThrowException(jenv, SWIG_JavaRuntimeException, Standard_Failure::Caught()->DynamicType()->Name());
-    }
-}
-
-//-----------------------------------------------------------------------------
 //
 %include "occ_handle.i"
 %include "Standard.i"
 %include "TopoDS.i"
 
-%occ_handle(Standard_Type)
+//-----------------------------------------------------------------------------
+//
+%occ_handle(Patched_Standard_Handle)
 %occ_handle(Standard_Transient)
+%occ_handle(Standard_Type)
 
 %include "Standard_TypeDef.hxx"
 %include "Standard_Macro.hxx"
 %include "Standard_DefineAlloc.hxx"
+
+%include "Patched_Standard_Handle.hxx"
 %include "Standard_Transient.hxx"
-
-
-
-OCC_TRANSIENT(Patched_Standard_Handle)
-
 %include "Standard_Type.hxx"
 
 //-----------------------------------------------------------------------------
@@ -203,6 +192,17 @@ OCC_ROOT(STEPControl_Reader)
 OCC_ROOT(STEPControl_StepModelType)
 OCC_ROOT(STEPControl_Writer)
 OCC_ROOT(IGESControl_Reader)
+
+//-----------------------------------------------------------------------------
+// Propagate all OCC exceptions to Java
+%exception  {
+    try {
+        $action
+    } catch (Standard_Failure ex) {
+       std::cerr << ex.GetMessageString() << std::endl;
+        SWIG_JavaThrowException(jenv, SWIG_JavaRuntimeException, Standard_Failure::Caught()->DynamicType()->Name());
+    }
+}
 
 //-----------------------------------------------------------------------------
 // Insert Java code to load the native library
