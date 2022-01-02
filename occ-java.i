@@ -75,14 +75,16 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 %include "Standard.i"
 %include "TopoDS.i"
 
+%occ_handle(Standard_Type)
+%occ_handle(Standard_Transient)
+
 %include "Standard_TypeDef.hxx"
 %include "Standard_Macro.hxx"
 %include "Standard_DefineAlloc.hxx"
+%include "Standard_Transient.hxx"
 
-%occ_handle(Standard_Type)
 
 
-OCC_TRANSIENT(Standard_Transient)
 OCC_TRANSIENT(Patched_Standard_Handle)
 
 %include "Standard_Type.hxx"
