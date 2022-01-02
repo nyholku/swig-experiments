@@ -71,8 +71,9 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 
 //-----------------------------------------------------------------------------
 //
-%include <occ_handle.i>
-
+%include "occ_handle.i"
+%include "Standard.i"
+%include "TopoDS.i"
 
 %include "Standard_TypeDef.hxx"
 %include "Standard_Macro.hxx"
@@ -80,8 +81,6 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 
 %occ_handle(Standard_Type)
 
-%include "Standard.i"
-%include "TopoDS.i"
 
 OCC_TRANSIENT(Standard_Transient)
 OCC_TRANSIENT(Patched_Standard_Handle)
