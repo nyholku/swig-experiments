@@ -78,7 +78,6 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 
 %occ_handle(Standard_Transient)
 %occ_handle(TopoDS_TShape)
-//%occ_handle(NCollection_BaseAllocator)
 %occ_handle(Standard_Type)
 
 %include "Standard_Address.hxx"
@@ -92,6 +91,10 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 
 %include "Standard.i"
 %include "TopoDS.i"
+OCC_TRANSIENT(Standard_Transient)
+OCC_TRANSIENT(Patched_Standard_Handle)
+
+%include "Standard_Type.hxx"
 
 //-----------------------------------------------------------------------------
 //
@@ -115,10 +118,6 @@ OCC_GP(Cylinder)
 OCC_GP(Elips2d)
 
 
-OCC_TRANSIENT(Standard_Transient)
-OCC_TRANSIENT(Patched_Standard_Handle)
-
-%include "Standard_Type.hxx"
 
 OCC_ROOT(TopAbs)
 OCC_ROOT(TopAbs_ShapeEnum)
