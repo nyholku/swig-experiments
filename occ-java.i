@@ -54,7 +54,6 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 #include "Standard_math.hxx"
 #include "Standard_TypeDef.hxx"
 #include "Standard_Type.hxx"
-#include "Standard_Handle.hxx"
 #include "NCollection_List.hxx"
 #include "TopTools_ListOfShape.hxx"
 %}
