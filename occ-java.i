@@ -94,10 +94,6 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 %include "TopoDS.i"
 
 //-----------------------------------------------------------------------------
-
-//class Geom_Surface;
-
-//-----------------------------------------------------------------------------
 //
 OCC_GP(XYZ)
 OCC_GP(Pln)
@@ -123,8 +119,6 @@ OCC_TRANSIENT(Standard_Transient)
 OCC_TRANSIENT(Patched_Standard_Handle)
 
 %include "Standard_Type.hxx"
-
-%include "TopoDS_Shape.hxx"
 
 OCC_ROOT(TopAbs)
 OCC_ROOT(TopAbs_ShapeEnum)
@@ -162,10 +156,15 @@ OCC_TRANSIENT(Geom2d_Ellipse)
 OCC_TRANSIENT(Geom2d_BoundedCurve)
 OCC_TRANSIENT(Geom2d_TrimmedCurve)
 
+
+//-----------------------------------------------------------------------------
+//
 %typemap(javaout) opencascade::handle<Geom_Surface>, opencascade::handle<Geom_Surface>* {
     long cPtr = $jnicall;
     return (Geom_Surface)Standard_Transient.downcastHandle(cPtr, Geom_Surface.class);
 }
+
+//-----------------------------------------------------------------------------
 
 
 
