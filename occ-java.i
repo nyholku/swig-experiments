@@ -77,30 +77,14 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 %include <occ_handle.i>
 
 %occ_handle(Standard_Transient)
-%occ_handle(Geom_Geometry)
-%occ_handle(Geom_Surface)
-%occ_handle(Geom_ElementarySurface)
-%occ_handle(Geom_CylindricalSurface)
-%occ_handle(Geom_Plane)
 %occ_handle(TopoDS_TShape)
-%occ_handle(Geom_Curve)
-%occ_handle(Geom_BoundedCurve)
-%occ_handle(Geom_TrimmedCurve)
-%occ_handle(Geom2d_Geometry)
-%occ_handle(Geom2d_Curve)
-%occ_handle(Geom2d_Conic)
-%occ_handle(Geom2d_Ellipse)
-%occ_handle(Geom2d_BoundedCurve)
-%occ_handle(Geom2d_TrimmedCurve)
-%occ_handle(NCollection_BaseAllocator)
-
+//%occ_handle(NCollection_BaseAllocator)
 %occ_handle(Standard_Type)
 
 %include "Standard_Address.hxx"
 %include "Standard_math.hxx"
 %include "Standard_TypeDef.hxx"
 %include "Standard_Macro.hxx"
-
 %include "Standard_DefineAlloc.hxx"
 %include "Standard.hxx"
 %include "Standard_PrimitiveTypes.hxx"
@@ -111,12 +95,7 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 
 //-----------------------------------------------------------------------------
 
-class Geom_Surface;
-
-%typemap(javaout) opencascade::handle<Geom_Surface>,opencascade::handle<Geom_Surface>* {
-    long cPtr = $jnicall;
-    return (Geom_Surface)Standard_Transient.downcastHandle(cPtr, Geom_Surface.class);
-}
+//class Geom_Surface;
 
 //-----------------------------------------------------------------------------
 //
@@ -162,22 +141,11 @@ OCC_ROOT(TopLoc_Location)
 OCC_ROOT(TopoDS_Iterator)
 OCC_ROOT(TopExp_Explorer)
 OCC_ROOT(TopoDS_Compound)
-OCC_ROOT(TopoDS_Builder)
 
 
 %include "NCollection_List.hxx"
 %include "TopTools_ListOfShape.hxx"
 %template(TopTools_ListOfShape) NCollection_List<TopoDS_Shape>;
-
-%rename(getShape) BRepBuilderAPI_MakeShape::operator TopoDS_Shape();
-%rename(getShell) BRepPrimAPI_MakeBox::operator TopoDS_Shell();
-%rename(getSolid) BRepPrimAPI_MakeBox::operator TopoDS_Solid();
-%rename(getEdge) BRepBuilderAPI_MakeEdge::operator TopoDS_Edge();
-%rename(getWire) BRepBuilderAPI_MakeWire::operator TopoDS_Wire();
-%rename(getFace) BRepBuilderAPI_MakeFace::operator TopoDS_Face();
-%rename(getShell) BRepPrimAPI_MakeOneAxis::operator TopoDS_Shell();
-%rename(getFace) BRepPrimAPI_MakeOneAxis::operator TopoDS_Face();
-%rename(getSolid) BRepPrimAPI_MakeOneAxis::operator TopoDS_Solid();
 
 OCC_TRANSIENT(Geom_Geometry)
 OCC_TRANSIENT(Geom_Surface)
@@ -194,47 +162,56 @@ OCC_TRANSIENT(Geom2d_Ellipse)
 OCC_TRANSIENT(Geom2d_BoundedCurve)
 OCC_TRANSIENT(Geom2d_TrimmedCurve)
 
+%typemap(javaout) opencascade::handle<Geom_Surface>, opencascade::handle<Geom_Surface>* {
+    long cPtr = $jnicall;
+    return (Geom_Surface)Standard_Transient.downcastHandle(cPtr, Geom_Surface.class);
+}
+
+
+
+OCC_ROOT(GC_Root)
 OCC_ROOT(GCE2d_Root)
 OCC_ROOT(GC_MakeArcOfCircle)
 OCC_ROOT(GC_MakeSegment)
 OCC_ROOT(GCE2d_MakeSegment)
-OCC_ROOT(XSControl_Reader)
-OCC_ROOT(STEPControl_Reader)
-OCC_ROOT(STEPControl_StepModelType)
-OCC_ROOT(STEPControl_Writer)
-OCC_ROOT(IGESControl_Reader)
-
-
 
 OCC_ROOT(BRepBuilderAPI_Command)
 OCC_ROOT(BRepBuilderAPI_MakeShape)
-OCC_ROOT(BRepPrim_GWedge)
-OCC_ROOT(BRepPrimAPI_MakeSweep)
-OCC_ROOT(BRepPrimAPI_MakeOneAxis)
+OCC_ROOT(BOPAlgo_Options)
 OCC_ROOT(BRepAlgoAPI_Algo)
 OCC_ROOT(BRepAlgoAPI_BuilderAlgo)
 OCC_ROOT(BRepAlgoAPI_BooleanOperation)
 OCC_ROOT(BRepBuilderAPI_ModifyShape)
-OCC_ROOT(BRepFilletAPI_LocalOperation)
 OCC_ROOT(BRepBuilderAPI_MakeEdge)
 OCC_ROOT(BRepBuilderAPI_MakeWire)
 OCC_ROOT(BRepBuilderAPI_Transform)
 OCC_ROOT(BRepBuilderAPI_MakeFace)
-OCC_ROOT(BRepPrimAPI_MakeBox)
-OCC_ROOT(BRep_Tool)
 
+OCC_ROOT(BRepPrim_GWedge)
+OCC_ROOT(BRepPrimAPI_MakeBox)
+OCC_ROOT(BRepPrimAPI_MakeSweep)
 OCC_ROOT(BRepPrimAPI_MakePrism)
+OCC_ROOT(BRepPrimAPI_MakeOneAxis)
 OCC_ROOT(BRepPrimAPI_MakeCylinder)
 OCC_ROOT(BRepAlgoAPI_Fuse)
 OCC_ROOT(BRepOffsetAPI_MakeOffsetShape)
 OCC_ROOT(BRepOffsetAPI_MakeThickSolid)
 OCC_ROOT(BRepOffsetAPI_ThruSections)
-OCC_ROOT(BRepPrim_Wedge)
-OCC_ROOT(BRep_Builder)
+OCC_ROOT(BRepFilletAPI_LocalOperation)
 OCC_ROOT(BRepFilletAPI_MakeFillet)
+
+OCC_ROOT(BRep_Tool)
 OCC_ROOT(BRepLib)
 OCC_ROOT(BRepTools)
 
+OCC_ROOT(TopoDS_Builder)
+OCC_ROOT(BRep_Builder)
+
+OCC_ROOT(XSControl_Reader)
+OCC_ROOT(STEPControl_Reader)
+OCC_ROOT(STEPControl_StepModelType)
+OCC_ROOT(STEPControl_Writer)
+OCC_ROOT(IGESControl_Reader)
 
 //-----------------------------------------------------------------------------
 // Insert Java code to load the native library
