@@ -106,6 +106,17 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 %include "Standard.hxx"
 %include "Standard_PrimitiveTypes.hxx"
 
+
+%include "Standard.i"
+%include "TopoDS.i"
+
+class Geom_Surface;
+
+%typemap(javaout) opencascade::handle<Geom_Surface>,opencascade::handle<Geom_Surface>* {
+    long cPtr = $jnicall;
+    return (Geom_Surface)Standard_Transient.downcastHandle(cPtr, Geom_Surface.class);
+}
+
 OCC_GP(XYZ)
 OCC_GP(Pln)
 OCC_GP(Pnt)
@@ -125,16 +136,6 @@ OCC_GP(GTrsf2d)
 OCC_GP(Cylinder)
 OCC_GP(Elips2d)
 
-%include "Standard.i"
-
-class Geom_Surface;
-
-%typemap(javaout) opencascade::handle<Geom_Surface>,opencascade::handle<Geom_Surface>* {
-    long cPtr = $jnicall;
-    return (Geom_Surface)Standard_Transient.downcastHandle(cPtr, Geom_Surface.class);
-}
-
-%include "TopoDS.i"
 
 OCC_TRANSIENT(Standard_Transient)
 OCC_TRANSIENT(Patched_Standard_Handle)
@@ -175,7 +176,6 @@ OCC_ROOT(TopoDS_Builder)
 %rename(getFace) BRepPrimAPI_MakeOneAxis::operator TopoDS_Face();
 %rename(getSolid) BRepPrimAPI_MakeOneAxis::operator TopoDS_Solid();
 
-
 OCC_ROOT(BRepBuilderAPI_Command)
 OCC_ROOT(BRepBuilderAPI_MakeShape)
 OCC_ROOT(BRepPrim_GWedge)
@@ -191,17 +191,6 @@ OCC_ROOT(BRepBuilderAPI_MakeWire)
 OCC_ROOT(BRepBuilderAPI_Transform)
 OCC_ROOT(BRepBuilderAPI_MakeFace)
 OCC_ROOT(BRepPrimAPI_MakeBox)
-OCC_ROOT(BRepPrimAPI_MakePrism)
-OCC_ROOT(BRepPrimAPI_MakeCylinder)
-OCC_ROOT(BRepAlgoAPI_Fuse)
-OCC_ROOT(BRepOffsetAPI_MakeOffsetShape)
-OCC_ROOT(BRepOffsetAPI_MakeThickSolid)
-OCC_ROOT(BRepOffsetAPI_ThruSections)
-OCC_ROOT(BRepPrim_Wedge)
-OCC_ROOT(BRep_Builder)
-OCC_ROOT(BRepFilletAPI_MakeFillet)
-OCC_ROOT(BRepLib)
-OCC_ROOT(BRepTools)
 OCC_ROOT(BRep_Tool)
 
 OCC_TRANSIENT(Geom_Geometry)
@@ -228,11 +217,22 @@ OCC_ROOT(STEPControl_Reader)
 OCC_ROOT(STEPControl_StepModelType)
 OCC_ROOT(STEPControl_Writer)
 OCC_ROOT(IGESControl_Reader)
+
+OCC_ROOT(BRepPrimAPI_MakePrism)
+OCC_ROOT(BRepPrimAPI_MakeCylinder)
+OCC_ROOT(BRepAlgoAPI_Fuse)
+OCC_ROOT(BRepOffsetAPI_MakeOffsetShape)
+OCC_ROOT(BRepOffsetAPI_MakeThickSolid)
+OCC_ROOT(BRepOffsetAPI_ThruSections)
+OCC_ROOT(BRepPrim_Wedge)
+OCC_ROOT(BRep_Builder)
+OCC_ROOT(BRepFilletAPI_MakeFillet)
 OCC_ROOT(BRepLib)
 OCC_ROOT(BRepTools)
 
 
-// load the native library
+//-----------------------------------------------------------------------------
+// Insert Java code to load the native library
 %pragma(java) jniclasscode=%{
 	static
 	{
