@@ -1,5 +1,6 @@
 # Minimal makefile to just check that everything from SWIG to C++ to wrappers to Java compiles and runs
 # As is, this is not portable at all to a different machine let alone different OS
+#
 java_home = /Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home
 jni_headers =$(java_home)/include
 jni_darwin_headers = $(java_home)/include/darwin
