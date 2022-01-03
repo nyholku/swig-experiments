@@ -318,9 +318,13 @@ OCC_ROOT(BRepOffsetAPI_ThruSections)
 OCC_ROOT(BRepFilletAPI_LocalOperation)
 OCC_ROOT(BRepFilletAPI_MakeFillet)
 
+OCC_ROOT(BRepSweep_Prism)
+OCC_ROOT(BRepSweep_Revol)
+
 OCC_ROOT(BRep_Tool)
 OCC_ROOT(BRepLib)
 OCC_ROOT(BRepTools)
+OCC_TRANSIENT(BRepTools_ReShape)
 
 OCC_ROOT(TopoDS_Builder)
 OCC_ROOT(BRep_Builder)
