@@ -80,6 +80,10 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 
 //-----------------------------------------------------------------------------
 // Simple header only types/enums
+%{
+#include "Adaptor3d_HSurface.hxx"
+%}
+
 %include "GeomAbs_BSplKnotDistribution.hxx"
 %include "GeomAbs_CurveForm.hxx"
 %include "GeomAbs_CurveType.hxx"
@@ -209,11 +213,17 @@ OCC_ROOT(Adaptor3d_Curve)
  //       OCC_ROOT(GeomFill_SngliFunc)
         OCC_ROOT(ProjLib_ProjectOnPlane)
 
+
+OCC_TRANSIENT(Adaptor2d_HCurve2d)
+        OCC_TRANSIENT(Adaptor2d_HLine2d)
+        OCC_TRANSIENT(Adaptor2d_HOffsetCurve)
+        OCC_TRANSIENT(BRepAdaptor_HCurve2d)
+        OCC_TRANSIENT(Geom2dAdaptor_GHCurve)
+                OCC_TRANSIENT(Geom2dAdaptor_HCurve)
+        OCC_TRANSIENT(ProjLib_HCompProjectedCurve)
+        OCC_TRANSIENT(ProjLib_HProjectedCurve)
+
 OCC_ROOT(Bisector_PolyBis)
-%{
-#include "Adaptor2d_HCurve2d.hxx"
-#include "Adaptor3d_HSurface.hxx"
-%}
 
 //-----------------------------------------------------------------------------
 //
@@ -233,9 +243,9 @@ OCC_ROOT(GC_MakeSegment)
 OCC_ROOT(GCE2d_MakeSegment)
 
 
-//OCC_ROOT(BRepBuilderAPI_EdgeError)
-//OCC_ROOT(BRepBuilderAPI_FaceError)
-//OCC_ROOT(BRepBuilderAPI_WireError)
+OCC_ROOT(BRepBuilderAPI_EdgeError)
+OCC_ROOT(BRepBuilderAPI_FaceError)
+OCC_ROOT(BRepBuilderAPI_WireError)
 
 OCC_ROOT(BRepBuilderAPI_Command)
 OCC_ROOT(BRepBuilderAPI_MakeShape)
