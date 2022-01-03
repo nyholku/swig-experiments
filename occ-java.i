@@ -82,6 +82,7 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 // Simple header only types/enums
 %{
 #include "Adaptor3d_HSurface.hxx"
+#include "Adaptor3d_HCurve.hxx"
 %}
 
 %include "GeomAbs_BSplKnotDistribution.hxx"
@@ -213,6 +214,13 @@ OCC_ROOT(Adaptor3d_Curve)
  //       OCC_ROOT(GeomFill_SngliFunc)
         OCC_ROOT(ProjLib_ProjectOnPlane)
 
+OCC_ROOT(Adaptor2d_Curve2d)
+        OCC_ROOT(Adaptor2d_Line2d)
+        OCC_ROOT(Adaptor2d_OffsetCurve)
+        OCC_ROOT(Geom2dAdaptor_Curve)
+                OCC_ROOT(BRepAdaptor_Curve2d)
+        OCC_ROOT(ProjLib_CompProjectedCurve)
+        OCC_ROOT(ProjLib_ProjectedCurve)
 
 OCC_TRANSIENT(Adaptor2d_HCurve2d)
         OCC_TRANSIENT(Adaptor2d_HLine2d)
