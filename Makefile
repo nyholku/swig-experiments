@@ -8,34 +8,7 @@ occ_headers = /usr/local/Cellar/opencascade/7.6.0/include/opencascade
 typetraits = /Library/Developer/CommandLineTools/usr/include/c++/v1/
 swigout = swigout
 output = bin
-all:
-	rm -r -f ./$(swigout)
-	mkdir $(swigout)
-	mkdir $(swigout)/occjava
-	rm -r -f ./$(output)
-	mkdir $(output)
-	swig \
-		-java \
-		-package occjava \
-		-I$(typetraits) \
-		-cpperraswarn \
-		-I$(occ_headers) \
-		-outdir $(swigout)/occjava  \
-		-c++ -java \
-		occ-java.i \
-		2>&1 \
-		| grep -v "delete ignored" \
-		| grep -v "delete\[\] ignored" \
-		| grep -v "new ignored" \
-		| grep -v "new\[\] ignored"
-
-	gcc -Wno-deprecated-declarations -std=c++11 \
-		-undefined dynamic_lookup \
-		-o $(output)/libOccJava.dylib -shared -I. \
-		-I$(occ_headers) -I$(jni_headers) \
-		-I$(jni_darwin_headers) \
-		occ-java_wrap.cxx \
-		-L/usr/local/Cellar/opencascade/7.6.0/lib/ -Wl,-rpath,/usr/local/Cellar/opencascade/7.6.0/lib/ \
+toolkits = \
 		-lTKernel \
 		-lTKPrim \
 		-lTKSTEP \
@@ -101,6 +74,51 @@ all:
 			-lTKXmlTObj\
 			-lTKXmlXCAF\
 			-lTKernel\
+
+all:
+	rm -r -f ./$(swigout)
+	mkdir $(swigout)
+	mkdir $(swigout)/occjava
+	rm -r -f ./$(output)
+	mkdir $(output)
+	swig \
+		-java \
+		-package occjava \
+		-I$(typetraits) \
+		-cpperraswarn \
+		-I$(occ_headers) \
+		-outdir $(swigout)/occjava  \
+		-c++ -java \
+		occ-java.i \
+		2>&1 \
+		| grep -v "Can't wrap 'operator ='" \
+		| grep -v "Can't wrap 'operator <<'" \
+		| grep -v "Can't wrap 'operator ()" \
+		| grep -v "Can't wrap 'operator ==" \
+		| grep -v "Can't wrap 'operator !=" \
+		| grep -v "Can't wrap 'operator +='" \
+		| grep -v "Can't wrap 'operator +'" \
+		| grep -v "Can't wrap 'operator -='" \
+		| grep -v "Can't wrap 'operator -'" \
+		| grep -v "Can't wrap 'operator \*='" \
+		| grep -v "Can't wrap 'operator \*'" \
+		| grep -v "Can't wrap 'operator ^='" \
+		| grep -v "Can't wrap 'operator ^'" \
+		| grep -v "Can't wrap 'operator /='" \
+		| grep -v "Can't wrap 'operator /'" \
+		| grep -v "delete ignored" \
+		| grep -v "delete\[\] ignored" \
+		| grep -v "new ignored" \
+		| grep -v "new\[\] ignored"
+
+	gcc -Wno-deprecated-declarations -std=c++11 \
+		-undefined dynamic_lookup \
+		-o $(output)/libOccJava.dylib -shared -I. \
+		-I$(occ_headers) -I$(jni_headers) \
+		-I$(jni_darwin_headers) \
+		occ-java_wrap.cxx \
+		-L/usr/local/Cellar/opencascade/7.6.0/lib/ -Wl,-rpath,/usr/local/Cellar/opencascade/7.6.0/lib/ \
+		$(toolkits)
 
 
 	javac -d $(output) -sourcepath $(swigout) $(swigout)/occjava/*.java
