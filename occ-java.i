@@ -55,6 +55,7 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 #include "Standard_TypeDef.hxx"
 #include "Standard_Type.hxx"
 #include "NCollection_List.hxx"
+//#include "NCollection_DefineHArray1.hxx"
 #include "TopTools_ListOfShape.hxx"
 %}
 
@@ -92,9 +93,11 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 %include "GeomAbs_UVSense.hxx"
 %include "BRepPrim_Direction.hxx"
 
+//%include "NCollection_DefineHArray1.hxx"
 %include "NCollection_List.hxx"
 %include "TopTools_ListOfShape.hxx"
 %template(TopTools_ListOfShape) NCollection_List<TopoDS_Shape>;
+
 
 //-----------------------------------------------------------------------------
 //
@@ -161,6 +164,7 @@ OCC_TRANSIENT(Poly_Polygon3D)
 OCC_TRANSIENT(Message_Alert)
 OCC_TRANSIENT(Message_Report)
 OCC_TRANSIENT(Poly_PolygonOnTriangulation)
+OCC_TRANSIENT(BRepTools_History)
 
 // hierarchy checks +++
 OCC_TRANSIENT(Geom_Geometry)
@@ -184,6 +188,10 @@ OCC_TRANSIENT(Geom_Geometry)
                         OCC_TRANSIENT(Geom_Plane)
                         OCC_TRANSIENT(Geom_SphericalSurface)
                         OCC_TRANSIENT(Geom_ToroidalSurface)
+                OCC_TRANSIENT(Geom_BoundedSurface)
+                        OCC_TRANSIENT(Geom_BSplineSurface)
+                        OCC_TRANSIENT(Geom_BezierSurface)
+                        OCC_TRANSIENT(Geom_RectangularTrimmedSurface)
 OCC_TRANSIENT(Geom2d_Geometry)
         OCC_TRANSIENT(Geom2d_AxisPlacement)
         OCC_TRANSIENT(Geom2d_Point)
@@ -228,6 +236,7 @@ OCC_TRANSIENT(MMgt_TShared)
                         OCC_TRANSIENT(GeomAdaptor_HSurface)
                 OCC_TRANSIENT(GeomAdaptor_HSurfaceOfLinearExtrusion)
                 OCC_TRANSIENT(GeomAdaptor_HSurfaceOfRevolution)
+//        OCC_TRANSIENT(ChFiDS_SecHArray1)
 
 OCC_TRANSIENT(Adaptor2d_HCurve2d)
         OCC_TRANSIENT(Adaptor2d_HLine2d)
@@ -249,6 +258,7 @@ OCC_TRANSIENT(Adaptor2d_HCurve2d)
 //-----------------------------------------------------------------------------
 
 OCC_ROOT(Bisector_PolyBis)
+OCC_ROOT(ChFiDS_CircSection)
 
 OCC_ROOT(Adaptor3d_Curve)
         OCC_ROOT(Adaptor3d_CurveOnSurface)
