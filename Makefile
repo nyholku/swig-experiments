@@ -21,7 +21,13 @@ all:
 		-I$(occ_headers) \
 		-outdir $(swigout)/occjava  \
 		-c++ -java \
-		occ-java.i
+		occ-java.i \
+		2>&1 \
+		| grep -v "delete ignored" \
+		| grep -v "delete\[\] ignored" \
+		| grep -v "new ignored" \
+		| grep -v "new\[\] ignored"
+
 	gcc -Wno-deprecated-declarations -std=c++11 \
 		-undefined dynamic_lookup \
 		-o $(output)/libOccJava.dylib -shared -I. \
