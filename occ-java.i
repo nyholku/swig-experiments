@@ -154,6 +154,14 @@ OCC_ROOT(TopoDS_Compound)
 
 
 OCC_TRANSIENT(TopoDS_TShape)
+
+OCC_TRANSIENT(Poly_Polygon2D)
+OCC_TRANSIENT(Poly_Polygon3D)
+
+OCC_TRANSIENT(Message_Alert)
+OCC_TRANSIENT(Message_Report)
+OCC_TRANSIENT(Poly_PolygonOnTriangulation)
+
 // hierarchy checks +++
 OCC_TRANSIENT(Geom_Geometry)
         OCC_TRANSIENT(Geom_Curve)
