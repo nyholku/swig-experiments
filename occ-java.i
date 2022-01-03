@@ -170,7 +170,7 @@ OCC_TRANSIENT(Geom2d_Geometry)
                         OCC_TRANSIENT(Bisector_BisecCC)
                         OCC_TRANSIENT(Bisector_BisecPC)
                 OCC_TRANSIENT(Geom2d_BoundedCurve)
-##                        OCC_TRANSIENT(Geom2d_BSPlineCurve)
+//                        OCC_TRANSIENT(Geom2d_BSPlineCurve)
                         OCC_TRANSIENT(Geom2d_BezierCurve)
                         OCC_TRANSIENT(Geom2d_TrimmedCurve)
                 OCC_TRANSIENT(Geom2d_Conic)
@@ -185,7 +185,21 @@ OCC_TRANSIENT(Geom2d_Geometry)
         OCC_TRANSIENT(Geom2d_Vector)
                 OCC_TRANSIENT(Geom2d_Direction)
                 OCC_TRANSIENT(Geom2d_VectorWithMagnitude)
-
+OCC_ROOT(Adaptor3d_Curve)
+        OCC_ROOT(Adaptor3d_CurveOnSurface)
+        OCC_ROOT(Adaptor3d_IsoCurve)
+        OCC_ROOT(BRepAdaptor_CompCurve)
+        OCC_ROOT(BRepAdaptor_Curve)
+        OCC_ROOT(BiTgte_CurveOnEdge)
+        OCC_ROOT(BiTgte_CurveOnVertex)
+        OCC_ROOT(ChFiDS_ElSpine)
+        OCC_ROOT(GeomAdaptor_Curve)
+ //       OCC_ROOT(GeomFill_SngliFunc)
+        OCC_ROOT(ProjLib_ProjectOnPlane)
+%{
+#include "Adaptor2d_HCurve2d.hxx"
+#include "Adaptor3d_HSurface.hxx"
+%}
 
 //-----------------------------------------------------------------------------
 //
