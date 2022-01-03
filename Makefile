@@ -3,7 +3,7 @@
 java_home = /Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home
 jni_headers =$(java_home)/include
 jni_darwin_headers = $(java_home)/include/darwin
-occ_headers = /usr/local/include/opencascade
+occ_headers = /usr/local/Cellar/opencascade/7.6.0/include/opencascade
 typetraits = /Library/Developer/CommandLineTools/usr/include/c++/v1/
 swigout = swigout
 output = bin
@@ -34,7 +34,7 @@ all:
 		-I$(occ_headers) -I$(jni_headers) \
 		-I$(jni_darwin_headers) \
 		occ-java_wrap.cxx \
-		-L/usr/local/lib -Wl,-rpath,/usr/local/lib \
+		-L/usr/local/Cellar/opencascade/7.6.0/lib/ -Wl,-rpath,/usr/local/Cellar/opencascade/7.6.0/lib/ \
 		-lTKernel \
 		-lTKPrim \
 		-lTKSTEP \

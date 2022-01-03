@@ -83,14 +83,14 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 // Simple header only types/enums
 
 %include "GeomAbs_BSplKnotDistribution.hxx"
-%include "GeomAbs_CurveForm.hxx"
+//%include "GeomAbs_CurveForm.hxx"
 %include "GeomAbs_CurveType.hxx"
 %include "GeomAbs_IsoType.hxx"
 %include "GeomAbs_JoinType.hxx"
 %include "GeomAbs_Shape.hxx"
-%include "GeomAbs_SurfaceForm.hxx"
+//%include "GeomAbs_SurfaceForm.hxx"
 %include "GeomAbs_SurfaceType.hxx"
-%include "GeomAbs_UVSense.hxx"
+//%include "GeomAbs_UVSense.hxx"
 %include "BRepPrim_Direction.hxx"
 
 //%include "NCollection_DefineHArray1.hxx"
@@ -165,6 +165,11 @@ OCC_TRANSIENT(Message_Alert)
 OCC_TRANSIENT(Message_Report)
 OCC_TRANSIENT(Poly_PolygonOnTriangulation)
 OCC_TRANSIENT(BRepTools_History)
+OCC_TRANSIENT(Message_Messenger)
+
+OCC_TRANSIENT(Poly_Triangulation)
+        OCC_TRANSIENT(RWMesh_TriangulationSource)
+                OCC_TRANSIENT(RWGltf_GltfLatePrimitiveArray)
 
 // hierarchy checks +++
 OCC_TRANSIENT(Geom_Geometry)
@@ -216,37 +221,65 @@ OCC_TRANSIENT(Geom2d_Geometry)
                 OCC_TRANSIENT(Geom2d_Direction)
                 OCC_TRANSIENT(Geom2d_VectorWithMagnitude)
 
+// +++ NOT IN OCC 7.6.0
+//OCC_TRANSIENT(Adaptor3d_HCurve)
+//        OCC_TRANSIENT(Adaptor3d_HCurveOnSurface)
+//                OCC_TRANSIENT(Adaptor3d_HCurveOnSurface)
+//                OCC_TRANSIENT(Adaptor3d_HIsoCurve)
+//                OCC_TRANSIENT(BiTgte_HCurveOnEdge)
+//                OCC_TRANSIENT(BiTgte_HCurveOnVertex)
+//                OCC_TRANSIENT(BRepAdaptor_HCompCurve)
+//                OCC_TRANSIENT(BRepAdaptor_HCurve)
+//                OCC_TRANSIENT(ChFiDS_HElSpine)
+//                OCC_TRANSIENT(GeomAdaptor_GHCurve)
+//                        OCC_TRANSIENT(GeomAdaptor_HCurve)
 
-OCC_TRANSIENT(Adaptor3d_HCurve)
-        OCC_TRANSIENT(Adaptor3d_HCurveOnSurface)
-                OCC_TRANSIENT(Adaptor3d_HCurveOnSurface)
-                OCC_TRANSIENT(Adaptor3d_HIsoCurve)
-                OCC_TRANSIENT(BiTgte_HCurveOnEdge)
-                OCC_TRANSIENT(BiTgte_HCurveOnVertex)
-                OCC_TRANSIENT(BRepAdaptor_HCompCurve)
-                OCC_TRANSIENT(BRepAdaptor_HCurve)
-                OCC_TRANSIENT(ChFiDS_HElSpine)
-                OCC_TRANSIENT(GeomAdaptor_GHCurve)
-                        OCC_TRANSIENT(GeomAdaptor_HCurve)
-
-OCC_TRANSIENT(MMgt_TShared)
-        OCC_TRANSIENT(Adaptor3d_HSurface)
-                OCC_TRANSIENT(BRepAdaptor_HSurface)
-                OCC_TRANSIENT(GeomAdaptor_GHSurface)
-                        OCC_TRANSIENT(GeomAdaptor_HSurface)
-                OCC_TRANSIENT(GeomAdaptor_HSurfaceOfLinearExtrusion)
-                OCC_TRANSIENT(GeomAdaptor_HSurfaceOfRevolution)
+//OCC_TRANSIENT(MMgt_TShared)
+//        OCC_TRANSIENT(Adaptor3d_HSurface)
+//                OCC_TRANSIENT(BRepAdaptor_HSurface)
+//                OCC_TRANSIENT(GeomAdaptor_GHSurface)
+//                        OCC_TRANSIENT(GeomAdaptor_HSurface)
+//                OCC_TRANSIENT(GeomAdaptor_HSurfaceOfLinearExtrusion)
+//                OCC_TRANSIENT(GeomAdaptor_HSurfaceOfRevolution)
 //        OCC_TRANSIENT(ChFiDS_SecHArray1)
 
-OCC_TRANSIENT(Adaptor2d_HCurve2d)
-        OCC_TRANSIENT(Adaptor2d_HLine2d)
-        OCC_TRANSIENT(Adaptor2d_HOffsetCurve)
-        OCC_TRANSIENT(BRepAdaptor_HCurve2d)
-        OCC_TRANSIENT(Geom2dAdaptor_GHCurve)
-                OCC_TRANSIENT(Geom2dAdaptor_HCurve)
-        OCC_TRANSIENT(ProjLib_HCompProjectedCurve)
-        OCC_TRANSIENT(ProjLib_HProjectedCurve)
+//OCC_TRANSIENT(Adaptor2d_HCurve2d)
+//        OCC_TRANSIENT(Adaptor2d_HLine2d)
+//        OCC_TRANSIENT(Adaptor2d_HOffsetCurve)
+//        OCC_TRANSIENT(BRepAdaptor_HCurve2d)
+//        OCC_TRANSIENT(Geom2dAdaptor_GHCurve)
+//                OCC_TRANSIENT(Geom2dAdaptor_HCurve)
+//        OCC_TRANSIENT(ProjLib_HCompProjectedCurve)
+//        OCC_TRANSIENT(ProjLib_HProjectedCurve)
 
+// --- NOT IN OCC 7.6.0
+
+//OCC_TRANSIENT(Adaptor3d_Curve)
+//        OCC_TRANSIENT(Adaptor3d_CurveOnSurface)
+//        OCC_TRANSIENT(Adaptor3d_IsoCurve)
+//        OCC_TRANSIENT(Adaptor3d_Surface)
+//        OCC_TRANSIENT(Adaptor3d_HVertex)
+//        OCC_TRANSIENT(Adaptor3d_TopolTool)
+
+//        OCC_TRANSIENT(BRepAdaptor_CompCurve)
+//        OCC_TRANSIENT(BRepAdaptor_Curve)
+//        OCC_TRANSIENT(BiTgte_CurveOnEdge)
+//        OCC_TRANSIENT(BiTgte_CurveOnVertex)
+//        OCC_TRANSIENT(ChFiDS_ElSpine)
+//        OCC_TRANSIENT(GeomAdaptor_Curve)
+ //       OCC_ROOT(GeomFill_SngliFunc)
+//        OCC_TRANSIENT(ProjLib_ProjectOnPlane)
+
+
+OCC_TRANSIENT(Adaptor2d_Curve2d)
+        OCC_TRANSIENT(Adaptor2d_Line2d)
+        OCC_TRANSIENT(Adaptor2d_OffsetCurve)
+        OCC_TRANSIENT(Geom2dAdaptor_Curve)
+                OCC_TRANSIENT(BRepAdaptor_Curve2d)
+        OCC_TRANSIENT(ProjLib_CompProjectedCurve)
+        OCC_TRANSIENT(ProjLib_ProjectedCurve)
+
+OCC_ROOT(Adaptor3d_HSurfaceTool)
 
 //-----------------------------------------------------------------------------
 //
@@ -257,28 +290,13 @@ OCC_TRANSIENT(Adaptor2d_HCurve2d)
 
 //-----------------------------------------------------------------------------
 
+OCC_ROOT(Adaptor3d_HSurfaceTool)
+OCC_ROOT(math_Function)
+        OCC_ROOT(math_FunctionWithDerivative)
+                OCC_ROOT(Adaptor3d_InterFunc)
+
 OCC_ROOT(Bisector_PolyBis)
 OCC_ROOT(ChFiDS_CircSection)
-
-OCC_ROOT(Adaptor3d_Curve)
-        OCC_ROOT(Adaptor3d_CurveOnSurface)
-        OCC_ROOT(Adaptor3d_IsoCurve)
-        OCC_ROOT(BRepAdaptor_CompCurve)
-        OCC_ROOT(BRepAdaptor_Curve)
-        OCC_ROOT(BiTgte_CurveOnEdge)
-        OCC_ROOT(BiTgte_CurveOnVertex)
-        OCC_ROOT(ChFiDS_ElSpine)
-        OCC_ROOT(GeomAdaptor_Curve)
- //       OCC_ROOT(GeomFill_SngliFunc)
-        OCC_ROOT(ProjLib_ProjectOnPlane)
-
-OCC_ROOT(Adaptor2d_Curve2d)
-        OCC_ROOT(Adaptor2d_Line2d)
-        OCC_ROOT(Adaptor2d_OffsetCurve)
-        OCC_ROOT(Geom2dAdaptor_Curve)
-                OCC_ROOT(BRepAdaptor_Curve2d)
-        OCC_ROOT(ProjLib_CompProjectedCurve)
-        OCC_ROOT(ProjLib_ProjectedCurve)
 
 OCC_ROOT(GC_Root)
 OCC_ROOT(GCE2d_Root)
@@ -376,7 +394,7 @@ OCC_ROOT(IGESControl_Reader)
         $action
     } catch (Standard_Failure ex) {
        std::cerr << ex.GetMessageString() << std::endl;
-        SWIG_JavaThrowException(jenv, SWIG_JavaRuntimeException, Standard_Failure::Caught()->DynamicType()->Name());
+       // SWIG_JavaThrowException(jenv, SWIG_JavaRuntimeException, Standard_Failure::Caught()->DynamicType()->Name());
     }
 }
 
