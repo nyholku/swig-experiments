@@ -80,10 +80,6 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 
 //-----------------------------------------------------------------------------
 // Simple header only types/enums
-%{
-#include "Adaptor3d_HSurface.hxx"
-#include "Adaptor3d_HCurve.hxx"
-%}
 
 %include "GeomAbs_BSplKnotDistribution.hxx"
 %include "GeomAbs_CurveForm.hxx"
@@ -140,7 +136,6 @@ OCC_GP(Mat2d)
 OCC_GP(Trsf2d)
 
 
-
 OCC_ROOT(TopAbs)
 OCC_ROOT(TopAbs_ShapeEnum)
 OCC_ROOT(TopoDS_Shape)
@@ -156,26 +151,12 @@ OCC_ROOT(TopoDS_Iterator)
 OCC_ROOT(TopExp_Explorer)
 OCC_ROOT(TopoDS_Compound)
 
-OCC_ROOT(Adaptor3d_Curve)
-        OCC_ROOT(Adaptor3d_CurveOnSurface)
-        OCC_ROOT(Adaptor3d_IsoCurve)
-        OCC_ROOT(BRepAdaptor_CompCurve)
-        OCC_ROOT(BRepAdaptor_Curve)
-        OCC_ROOT(BiTgte_CurveOnEdge)
-        OCC_ROOT(BiTgte_CurveOnVertex)
-        OCC_ROOT(ChFiDS_ElSpine)
-        OCC_ROOT(GeomAdaptor_Curve)
- //       OCC_ROOT(GeomFill_SngliFunc)
-        OCC_ROOT(ProjLib_ProjectOnPlane)
 
-OCC_ROOT(Adaptor2d_Curve2d)
-        OCC_ROOT(Adaptor2d_Line2d)
-        OCC_ROOT(Adaptor2d_OffsetCurve)
-        OCC_ROOT(Geom2dAdaptor_Curve)
-                OCC_ROOT(BRepAdaptor_Curve2d)
-        OCC_ROOT(ProjLib_CompProjectedCurve)
-        OCC_ROOT(ProjLib_ProjectedCurve)
 
+
+OCC_TRANSIENT(Adaptor2d_HCurve2d)
+OCC_TRANSIENT(Adaptor3d_HCurve)
+OCC_TRANSIENT(Adaptor3d_HSurface)
 
 OCC_TRANSIENT(TopoDS_TShape)
 // hierarchy checks +++
@@ -233,7 +214,6 @@ OCC_TRANSIENT(Adaptor2d_HCurve2d)
         OCC_TRANSIENT(ProjLib_HCompProjectedCurve)
         OCC_TRANSIENT(ProjLib_HProjectedCurve)
 
-OCC_ROOT(Bisector_PolyBis)
 
 //-----------------------------------------------------------------------------
 //
@@ -244,7 +224,27 @@ OCC_ROOT(Bisector_PolyBis)
 
 //-----------------------------------------------------------------------------
 
+OCC_ROOT(Bisector_PolyBis)
 
+OCC_ROOT(Adaptor3d_Curve)
+        OCC_ROOT(Adaptor3d_CurveOnSurface)
+        OCC_ROOT(Adaptor3d_IsoCurve)
+        OCC_ROOT(BRepAdaptor_CompCurve)
+        OCC_ROOT(BRepAdaptor_Curve)
+        OCC_ROOT(BiTgte_CurveOnEdge)
+        OCC_ROOT(BiTgte_CurveOnVertex)
+        OCC_ROOT(ChFiDS_ElSpine)
+        OCC_ROOT(GeomAdaptor_Curve)
+ //       OCC_ROOT(GeomFill_SngliFunc)
+        OCC_ROOT(ProjLib_ProjectOnPlane)
+
+OCC_ROOT(Adaptor2d_Curve2d)
+        OCC_ROOT(Adaptor2d_Line2d)
+        OCC_ROOT(Adaptor2d_OffsetCurve)
+        OCC_ROOT(Geom2dAdaptor_Curve)
+                OCC_ROOT(BRepAdaptor_Curve2d)
+        OCC_ROOT(ProjLib_CompProjectedCurve)
+        OCC_ROOT(ProjLib_ProjectedCurve)
 
 OCC_ROOT(GC_Root)
 OCC_ROOT(GCE2d_Root)
