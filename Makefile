@@ -35,6 +35,66 @@ all:
 		-lTKIGES \
 		-lTKFillet \
 		-lTKOffset \
+		-lTKBO \
+		-lTKTopAlgo \
+			-lTKBO\
+			-lTKBRep\
+			-lTKBin\
+			-lTKBinL\
+			-lTKBinTObj\
+			-lTKBinXCAF\
+			-lTKBool\
+			-lTKCAF\
+			-lTKCDF\
+			-lTKDCAF\
+			-lTKDraw\
+			-lTKFeat\
+			-lTKFillet\
+			-lTKG2d\
+			-lTKG3d\
+			-lTKGeomAlgo\
+			-lTKGeomBase\
+			-lTKHLR\
+			-lTKIGES\
+			-lTKLCAF\
+			-lTKMath\
+			-lTKMesh\
+			-lTKMeshVS\
+			-lTKOffset\
+			-lTKOpenGl\
+			-lTKPrim\
+			-lTKQADraw\
+			-lTKRWMesh\
+			-lTKSTEP\
+			-lTKSTEP209\
+			-lTKSTEPAttr\
+			-lTKSTEPBase\
+			-lTKSTL\
+			-lTKService\
+			-lTKShHealing\
+			-lTKStd\
+			-lTKStdL\
+			-lTKTObj\
+			-lTKTObjDRAW\
+			-lTKTopAlgo\
+			-lTKTopTest\
+			-lTKV3d\
+			-lTKVCAF\
+			-lTKVRML\
+			-lTKViewerTest\
+			-lTKXCAF\
+			-lTKXDEDRAW\
+			-lTKXDEIGES\
+			-lTKXDESTEP\
+			-lTKXMesh\
+			-lTKXSBase\
+			-lTKXSDRAW\
+			-lTKXml\
+			-lTKXmlL\
+			-lTKXmlTObj\
+			-lTKXmlXCAF\
+			-lTKernel\
+
 
 	javac -d $(output) -sourcepath $(swigout) $(swigout)/occjava/*.java
 
