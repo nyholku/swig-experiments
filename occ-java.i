@@ -79,6 +79,18 @@ OCC_GP_AUX(classname, gp_ ## classname ## .hxx )
 %include "Standard_Type.hxx"
 
 //-----------------------------------------------------------------------------
+// Simple header only types/enums
+%include "GeomAbs_BSplKnotDistribution.hxx"
+%include "GeomAbs_CurveForm.hxx"
+%include "GeomAbs_CurveType.hxx"
+%include "GeomAbs_IsoType.hxx"
+%include "GeomAbs_JoinType.hxx"
+%include "GeomAbs_Shape.hxx"
+%include "GeomAbs_SurfaceForm.hxx"
+%include "GeomAbs_SurfaceType.hxx"
+%include "GeomAbs_UVSense.hxx"
+
+//-----------------------------------------------------------------------------
 //
 OCC_GP(XYZ)
 OCC_GP(Pln)
@@ -196,6 +208,8 @@ OCC_ROOT(Adaptor3d_Curve)
         OCC_ROOT(GeomAdaptor_Curve)
  //       OCC_ROOT(GeomFill_SngliFunc)
         OCC_ROOT(ProjLib_ProjectOnPlane)
+
+OCC_ROOT(Bisector_PolyBis)
 %{
 #include "Adaptor2d_HCurve2d.hxx"
 #include "Adaptor3d_HSurface.hxx"
