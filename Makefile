@@ -111,7 +111,8 @@ all:
 		| grep -v "new ignored" \
 		| grep -v "new\[\] ignored"
 
-	gcc -Wno-deprecated-declarations -std=c++11 \
+	gcc -Wno-deprecated-declarations \
+		-std=c++11 \
 		-undefined dynamic_lookup \
 		-o $(output)/libOccJava.dylib -shared -I. \
 		-I$(occ_headers) -I$(jni_headers) \
